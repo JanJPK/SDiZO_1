@@ -1,0 +1,56 @@
+﻿*********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   
+private void ExtendAddNumber(int number, int index)
+        {
+            if (index < size)
+            {
+                int[] newArray = new int[size+1];
+                if (index == 0)
+                {
+                    // Wsadzamy nowy element na początek
+                    // [0] = nowy elemenet
+                    // [1 -> max] = stare elementy
+                    newArray[0] = number;
+                    for (int i = 1; i < newArray.Length; i++)
+                    {
+                        newArray[i] = array[i-1];
+                    }
+                }
+                else
+                {
+                    if (index == size-1)
+                    {
+                        // Wsadzamy nowy element na koniec
+                        // [0 -> (max-1)] = stare elementy
+                        // [max] = nowy element
+                        for (int i = 0; i < newArray.Length - 1; i++)
+                        {
+                            newArray[i] = array[i];
+                        }
+                        newArray[size + 1] = number;
+                    }
+                    else
+                    {
+                        // Wsadzamy element na miejsce [index]
+                        // [0 -> (index-1)] = stare elementy
+                        // [index] = nowy element
+                        // [(index+1) -> max] = stare elementy
+                        for (int i = 0; i < index; i++)
+                        {
+                            newArray[i] = array[i];
+                        }
+                        newArray[index] = number;
+                        for (int i = index+1; i < newArray.Length; i++)
+                        {
+                            newArray[i] = array[i + 1];
+                        }
+
+                    }
+                }
+
+                // Przypisanie newArray do array
+                array = newArray;
+                size = array.Length;
+            }
+            
+        }
+*********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   *********   

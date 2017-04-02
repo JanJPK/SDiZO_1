@@ -78,6 +78,7 @@
             this.radioButtonDelRng = new System.Windows.Forms.RadioButton();
             this.radioButtonDelEnd = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBoxReset = new System.Windows.Forms.CheckBox();
             this.buttonReset = new System.Windows.Forms.Button();
             this.textBoxActionMultiplier = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -87,7 +88,7 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.checkBoxReset = new System.Windows.Forms.CheckBox();
+            this.buttonDumpContents = new System.Windows.Forms.Button();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
@@ -592,6 +593,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Tomato;
+            this.panel3.Controls.Add(this.buttonDumpContents);
             this.panel3.Controls.Add(this.checkBoxReset);
             this.panel3.Controls.Add(this.buttonReset);
             this.panel3.Controls.Add(this.textBoxActionMultiplier);
@@ -602,11 +604,21 @@
             this.panel3.Size = new System.Drawing.Size(221, 73);
             this.panel3.TabIndex = 25;
             // 
+            // checkBoxReset
+            // 
+            this.checkBoxReset.AutoSize = true;
+            this.checkBoxReset.Location = new System.Drawing.Point(3, 48);
+            this.checkBoxReset.Name = "checkBoxReset";
+            this.checkBoxReset.Size = new System.Drawing.Size(54, 17);
+            this.checkBoxReset.TabIndex = 29;
+            this.checkBoxReset.Text = "Reset";
+            this.checkBoxReset.UseVisualStyleBackColor = true;
+            // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(6, 44);
+            this.buttonReset.Location = new System.Drawing.Point(57, 45);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(100, 23);
+            this.buttonReset.Size = new System.Drawing.Size(49, 23);
             this.buttonReset.TabIndex = 28;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
@@ -687,15 +699,14 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // checkBoxReset
+            // buttonDumpContents
             // 
-            this.checkBoxReset.AutoSize = true;
-            this.checkBoxReset.Location = new System.Drawing.Point(6, 22);
-            this.checkBoxReset.Name = "checkBoxReset";
-            this.checkBoxReset.Size = new System.Drawing.Size(54, 17);
-            this.checkBoxReset.TabIndex = 29;
-            this.checkBoxReset.Text = "Reset";
-            this.checkBoxReset.UseVisualStyleBackColor = true;
+            this.buttonDumpContents.Location = new System.Drawing.Point(3, 16);
+            this.buttonDumpContents.Name = "buttonDumpContents";
+            this.buttonDumpContents.Size = new System.Drawing.Size(100, 23);
+            this.buttonDumpContents.TabIndex = 30;
+            this.buttonDumpContents.Text = "Podgląd";
+            this.buttonDumpContents.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -794,5 +805,6 @@
         private System.Windows.Forms.RadioButton radioButtonSearchValue;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBoxReset;
+        private System.Windows.Forms.Button buttonDumpContents;
     }
 }

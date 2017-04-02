@@ -36,7 +36,7 @@ namespace SDiZO_1.Tools
         }
 
         // Stop i zapis do pliku.
-        public void Stop()
+        public void Finish()
         {
             sw.Stop();
             ticks = sw.ElapsedTicks;
@@ -46,6 +46,12 @@ namespace SDiZO_1.Tools
             timeList.Add(sw.Elapsed.TotalMilliseconds);
             SaveProgress(sw.Elapsed.TotalMilliseconds.ToString());
             */
+        }
+
+        // Stop
+        public void Stop()
+        {
+            sw.Stop();
         }
 
         // Zwraca obecny pomiar.

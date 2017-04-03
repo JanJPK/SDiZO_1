@@ -69,11 +69,47 @@ namespace SDiZO_1.Structures
             }
         }
 
+        // Wyszukiwanie elementu o zadanej wartości.
+        // Zwraca indeks elementu lub null jeżeli taki element nie został znaleziony.
+        public SdTreeNode FindByValue(int value)
+        {
+            if (Size > 0)
+            {
+                SdTreeNode currentNode = root;
+                while (currentNode != null)
+                {
+                    // Jeżeli wartość się zgadza, węzeł został znaleziony.
+                    if (currentNode.Data == value)
+                    {
+                        return currentNode;
+                    }
+                    else
+                    {
+                        // Jeżeli nie, sprawdź czy jest mniejszy od wartości obecnego węzła.
+                        // Jeżeli jest mniejszy, przejdź do lewego dziecka.
+                        // Jeżeli jest niemniejszy, przejdź do prawego dziecka.
+                        if (value < currentNode.Data)
+                        {
+                            currentNode = currentNode.Left;
+                        }
+                        else
+                        {
+                            currentNode = currentNode.Right;
+                        }
+                    }
+                }
+                return null;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         // Wypisywanie zawartości do pliku.
         public void SaveData()
         {
-            using (StreamWriter sw = new StreamWriter("./Drzewo.txt"))
+            using (StreamWriter sw = new StreamWriter("./Drzw_Zawartość.txt"))
             {
                 if (Size > 0)
                 {

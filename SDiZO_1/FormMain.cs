@@ -37,7 +37,6 @@ namespace SDiZO_1
             InitializeComponent();
             radioButtonAddBeg.Checked = true;
             radioButtonDelBeg.Checked = true;
-            radioButtonSearchIndex.Checked = true;
 
             textBoxActionMultiplier.Text = "1";
             textBoxAddAmount.Text = "100";
@@ -50,10 +49,10 @@ namespace SDiZO_1
             textBoxStatusHeap.Text = "RDY";
             textBoxStatusTree.Text = "RDY";
 
-            textBoxArrayFilename.Text = "Array";
-            textBoxListFilename.Text = "List";
-            textBoxHeapFilename.Text = "Heap";
-            textBoxTreeFilename.Text = "Tree";
+            textBoxArrayFilename.Text = "Tabl_Czas";
+            textBoxListFilename.Text = "List_Czas";
+            textBoxHeapFilename.Text = "Kopc_Czas";
+            textBoxTreeFilename.Text = "Drzw_Czas";
 
             SdA = new SdArray();
             SdL = new SdList();
@@ -66,30 +65,94 @@ namespace SDiZO_1
         // Dodawanie.
         private void buttonAddTarget_Click(object sender, EventArgs e)
         {
-            AddSdArray();
-            AddSdList();
-            AddSdHeap();
-            AddSdTree();
+            int addFrom, addTo, addAmount;
+            if (!int.TryParse(textBoxAddFrom.Text, out addFrom))
+            {
+                MessageBox.Show("Nieprawidłowa liczba", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!int.TryParse(textBoxAddTo.Text, out addTo))
+            {
+                MessageBox.Show("Nieprawidłowa liczba", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!int.TryParse(textBoxAddAmount.Text, out addAmount))
+            {
+                MessageBox.Show("Nieprawidłowa liczba", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (addAmount < 1)
+            {
+                MessageBox.Show("Nieprawidłowa ilość", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            AddSdArray(addFrom, addTo, addAmount);
+            AddSdList(addFrom, addTo, addAmount);
+            AddSdHeap(addFrom, addTo, addAmount);
+            AddSdTree(addFrom, addTo, addAmount);
+
+            MessageBox.Show("Dodawanie zakończone", "Informacja",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         // Usuwanie.
         private void buttonDel_Click(object sender, EventArgs e)
         {
-            DeleteSdArray(Convert.ToInt32(textBoxDelAmount.Text));
-            DeleteSdList(Convert.ToInt32(textBoxDelAmount.Text));
-            DeleteSdHeap(Convert.ToInt32(textBoxDelAmount.Text));
+            int delAmount;
+            if (!int.TryParse(textBoxDelAmount.Text, out delAmount))
+            {
+                MessageBox.Show("Nieprawidłowa liczba", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (delAmount < 1)
+            {
+                MessageBox.Show("Nieprawidłowa ilość", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DeleteSdArray(delAmount);
+            DeleteSdList(delAmount);
+            DeleteSdHeap(delAmount);
+
+            MessageBox.Show("Usuwanie zakończone", "Informacja",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         // Ustawianie mnożnika operacji - każda operacja np. dodawanie zostanie powtórzona tyle razy ile wynosi parametr [cycles].
         private void buttonActionMultiplier_Click(object sender, EventArgs e)
         {
-            cycles = Convert.ToInt32(textBoxActionMultiplier.Text);
+            int cyclesAmount;
+            if (!int.TryParse(textBoxActionMultiplier.Text, out cyclesAmount))
+            {
+                MessageBox.Show("Nieprawidłowa liczba", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (cyclesAmount < 1)
+            {
+                MessageBox.Show("Nieprawidłowa ilość", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            cycles = cyclesAmount;
+            MessageBox.Show("Modyfikator poprawnie zmieniony", "Informacja",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         // Resetowanie struktur.
         private void buttonReset_Click(object sender, EventArgs e)
         {
             // Reset struktur do stanu pustego.
+            MessageBox.Show("Struktury wyzerowane", "Informacja",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             SdA = new SdArray();
             SdL = new SdList();
             SdH = new SdHeap();
+            SdT = new SdTree();
         }
         // Wypisywanie zawartości do pliku.
         private void buttonArraySaveData_Click(object sender, EventArgs e)
@@ -97,6 +160,8 @@ namespace SDiZO_1
             if (SdA != null)
             {
                 SdA.SaveData();
+                MessageBox.Show("Zawartość zapisana do pliku", "Informacja",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private void buttonListSaveData_Click(object sender, EventArgs e)
@@ -104,6 +169,8 @@ namespace SDiZO_1
             if (SdL != null)
             {
                 SdL.SaveData();
+                MessageBox.Show("Zawartość zapisana do pliku", "Informacja",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private void buttonHeapSaveData_Click(object sender, EventArgs e)
@@ -111,6 +178,8 @@ namespace SDiZO_1
             if (SdH != null)
             {
                 SdH.SaveData();
+                MessageBox.Show("Zawartość zapisana do pliku", "Informacja",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private void buttonTreeSaveData_Click(object sender, EventArgs e)
@@ -118,13 +187,15 @@ namespace SDiZO_1
             if (SdT != null)
             {
                 SdT.SaveData();
+                MessageBox.Show("Zawartość zapisana do pliku", "Informacja",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
 
         // Funkcje:
         // Dodawanie.
-        private void AddSdArray()
+        private void AddSdArray(int addFrom, int addTo, int addAmount)
         {
             // Tworzenie licznika czasu.
             SdAClock = new Clock(textBoxArrayFilename.Text, "ADDA X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text);
@@ -136,8 +207,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(Convert.ToInt32(textBoxAddFrom.Text),
-                        Convert.ToInt32(textBoxAddTo.Text), Convert.ToInt32(textBoxAddAmount.Text));
+                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
                     arraySize = numberArray.Length;
                     // Losowanie pozycji z zakresu [0, (obecny rozmiar tablicy)]
                     int position = rng.Next(0, SdA.Size);
@@ -165,8 +235,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(Convert.ToInt32(textBoxAddFrom.Text),
-                        Convert.ToInt32(textBoxAddTo.Text), Convert.ToInt32(textBoxAddAmount.Text));
+                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
                     arraySize = numberArray.Length;
                     // Start pomiaru.
                     SdAClock.Start();
@@ -191,8 +260,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(Convert.ToInt32(textBoxAddFrom.Text),
-                        Convert.ToInt32(textBoxAddTo.Text), Convert.ToInt32(textBoxAddAmount.Text));
+                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
                     arraySize = numberArray.Length;
                     // Start pomiaru.
                     SdAClock.Start();
@@ -215,7 +283,7 @@ namespace SDiZO_1
             textBoxTimeArray.Text = SdAClock.AverageTime();
             textBoxStatusArray.Text = "RDY";
         }
-        private void AddSdList()
+        private void AddSdList(int addFrom, int addTo, int addAmount)
         {   
             // Tworzenie licznika czasu.
             SdLClock = new Clock(textBoxListFilename.Text, "ADDL X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text);
@@ -227,8 +295,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(Convert.ToInt32(textBoxAddFrom.Text),
-                        Convert.ToInt32(textBoxAddTo.Text), Convert.ToInt32(textBoxAddAmount.Text));
+                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
                     arraySize = numberArray.Length;
                     // Losowanie pozycji z zakresu [0, (obecny rozmiar listy-1)]
                     int position = rng.Next(0, SdL.Size);
@@ -256,8 +323,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(Convert.ToInt32(textBoxAddFrom.Text),
-                        Convert.ToInt32(textBoxAddTo.Text), Convert.ToInt32(textBoxAddAmount.Text));
+                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
                     arraySize = numberArray.Length;
                     // Start pomiaru.
                     SdLClock.Start();
@@ -281,8 +347,7 @@ namespace SDiZO_1
             {
                 for (int j = 0; j < cycles; j++)
                 {
-                    numberArray = DataGenerator.NewArray(Convert.ToInt32(textBoxAddFrom.Text),
-                        Convert.ToInt32(textBoxAddTo.Text), Convert.ToInt32(textBoxAddAmount.Text));
+                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
                     arraySize = numberArray.Length;
                     // Start pomiaru.
                     SdLClock.Start();
@@ -306,15 +371,14 @@ namespace SDiZO_1
             textBoxStatusList.Text = "RDY";
 
         }
-        private void AddSdHeap()
+        private void AddSdHeap(int addFrom, int addTo, int addAmount)
         {
             SdHClock = new Clock(textBoxHeapFilename.Text, ("ADDH X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
             textBoxStatusHeap.Text = "WRK";
 
             for (int j = 0; j < cycles; j++)
             {
-                numberArray = DataGenerator.NewArray(Convert.ToInt32(textBoxAddFrom.Text),
-                    Convert.ToInt32(textBoxAddTo.Text), Convert.ToInt32(textBoxAddAmount.Text));
+                numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
                 arraySize = numberArray.Length;
                 // Start pomiaru.
                 SdHClock.Start();
@@ -337,15 +401,14 @@ namespace SDiZO_1
             textBoxStatusHeap.Text = "RDY";
 
         }
-        private void AddSdTree()
+        private void AddSdTree(int addFrom, int addTo, int addAmount)
         {
             SdTClock = new Clock(textBoxTreeFilename.Text, ("ADDT X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
             textBoxStatusTree.Text = "WRK";
 
             for (int j = 0; j < cycles; j++)
             {
-                numberArray = DataGenerator.NewArray(Convert.ToInt32(textBoxAddFrom.Text),
-                    Convert.ToInt32(textBoxAddTo.Text), Convert.ToInt32(textBoxAddAmount.Text));
+                numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
                 arraySize = numberArray.Length;
                 // Start pomiaru.
                 SdTClock.Start();

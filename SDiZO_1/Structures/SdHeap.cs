@@ -133,11 +133,30 @@ namespace SDiZO_1.Structures
                 rChildIndex = 2 * index + 2;
             }
         }
-        
+
+        // Wyszukiwanie elementu o zadanej wartości.
+        // Zwraca indeks elementu lub -1 jeżeli taki element nie został znaleziony.
+        public int FindByValue(int value)
+        {
+            int index = 0;
+            while (index < Size)
+            {
+                if (array[index] == value)
+                {
+                    return index;
+                }
+                else
+                {
+                    index++;
+                }
+            }
+            return -1;
+        }
+
         // Wypisywanie zawartości do pliku.
         public void SaveData()
         {
-            using (StreamWriter sw = new StreamWriter("./Kopiec.txt"))
+            using (StreamWriter sw = new StreamWriter("./Kopc_Zawartość.txt"))
             {
                 if (Size > 0)
                 {
@@ -161,6 +180,7 @@ namespace SDiZO_1.Structures
             }
 
         }
+
 
         private void HeapForm(int index, String prefix, StreamWriter sw)
         {

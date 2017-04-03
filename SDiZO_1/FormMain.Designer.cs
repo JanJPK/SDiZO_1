@@ -58,8 +58,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.buttonCreateFile = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
-            this.radioButtonSearchIndex = new System.Windows.Forms.RadioButton();
-            this.radioButtonSearchValue = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBoxAdd = new System.Windows.Forms.GroupBox();
@@ -93,6 +91,8 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
@@ -103,6 +103,7 @@
             this.groupBoxDel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelTree.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelArray
@@ -392,8 +393,6 @@
             // groupBoxSearch
             // 
             this.groupBoxSearch.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.groupBoxSearch.Controls.Add(this.radioButtonSearchIndex);
-            this.groupBoxSearch.Controls.Add(this.radioButtonSearchValue);
             this.groupBoxSearch.Controls.Add(this.textBox1);
             this.groupBoxSearch.Controls.Add(this.buttonSearch);
             this.groupBoxSearch.Location = new System.Drawing.Point(311, 3);
@@ -402,28 +401,6 @@
             this.groupBoxSearch.TabIndex = 36;
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Wyszukiwanie";
-            // 
-            // radioButtonSearchIndex
-            // 
-            this.radioButtonSearchIndex.AutoSize = true;
-            this.radioButtonSearchIndex.Location = new System.Drawing.Point(6, 38);
-            this.radioButtonSearchIndex.Name = "radioButtonSearchIndex";
-            this.radioButtonSearchIndex.Size = new System.Drawing.Size(57, 17);
-            this.radioButtonSearchIndex.TabIndex = 33;
-            this.radioButtonSearchIndex.TabStop = true;
-            this.radioButtonSearchIndex.Text = "Indeks";
-            this.radioButtonSearchIndex.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonSearchValue
-            // 
-            this.radioButtonSearchValue.AutoSize = true;
-            this.radioButtonSearchValue.Location = new System.Drawing.Point(6, 61);
-            this.radioButtonSearchValue.Name = "radioButtonSearchValue";
-            this.radioButtonSearchValue.Size = new System.Drawing.Size(65, 17);
-            this.radioButtonSearchValue.TabIndex = 34;
-            this.radioButtonSearchValue.TabStop = true;
-            this.radioButtonSearchValue.Text = "Wartość";
-            this.radioButtonSearchValue.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -756,11 +733,31 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Location = new System.Drawing.Point(9, 286);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(686, 184);
+            this.panel1.TabIndex = 38;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(148, 178);
+            this.groupBox2.TabIndex = 36;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Wyszukiwanie";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 285);
+            this.ClientSize = new System.Drawing.Size(710, 482);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelTree);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelArray);
@@ -787,6 +784,7 @@
             this.panel3.PerformLayout();
             this.panelTree.ResumeLayout(false);
             this.panelTree.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -849,8 +847,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonReset;
-        private System.Windows.Forms.RadioButton radioButtonSearchIndex;
-        private System.Windows.Forms.RadioButton radioButtonSearchValue;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBoxReset;
         private System.Windows.Forms.Button buttonDumpContents;
@@ -858,5 +854,7 @@
         private System.Windows.Forms.Button buttonListSaveData;
         private System.Windows.Forms.Button buttonHeapSaveData;
         private System.Windows.Forms.Button buttonTreeSaveData;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

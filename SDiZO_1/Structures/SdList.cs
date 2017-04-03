@@ -22,14 +22,14 @@ namespace SDiZO_1.Structures
         }
 
         // Dodawanie węzła w wybrane miejsce.
-        public void Add(int number, int position)
+        public void Add(int number, int index)
         {
-            if (position <= Size && position >= 0)
+            if (index <= Size && index >= 0)
             {
                 
                 SdListNode newListNode = new SdListNode(number);
-                // Szukamy węzła na pozycji [position] - zostanie on przesunięty w kierunku ogona i zastąpiony przez [newListNode].
-                SdListNode movedListNode = FindNode(position);
+                // Szukamy węzła na pozycji [index] - zostanie on przesunięty w kierunku ogona i zastąpiony przez [newListNode].
+                SdListNode movedListNode = FindByIndex(index);
                 // Łączenie nowego węzła z poprzednikiem
                 (movedListNode.Previous).Next = newListNode;
                 newListNode.Previous = movedListNode.Previous;
@@ -81,13 +81,13 @@ namespace SDiZO_1.Structures
         }
         
         // Usuwanie węzła z wybranego miejsca.
-        public void Delete(int position)
+        public void Delete(int index)
         {
-            if (position <= Size)
+            if (index <= Size)
             {
                 
-                // Szukamy węzła na pozycji [position] - zostanie on usunięty.
-                SdListNode targetListNode = FindNode(position);
+                // Szukamy węzła na pozycji [index] - zostanie on usunięty.
+                SdListNode targetListNode = FindByIndex(index);
                 // Łączenie węzła poprzedniego i następnego dla [targetListNode] ze sobą.
                 (targetListNode.Previous).Next = targetListNode.Next;
                 (targetListNode.Next).Previous = targetListNode.Previous;
@@ -102,14 +102,14 @@ namespace SDiZO_1.Structures
         // Funkcja znajdująca węzeł na wybranej pozycji.
         // Jeżeli [cel] - [połowa rozmiaru] > 0, to szybciej tam dojdziemy od ogona.
         // W innym przypadku startujemy od głowy.
-        public SdListNode FindNode(int position)
+        public SdListNode FindByIndex(int index)
         {
-            SdListNode targetListNode = null;
-            if (position - (Size / 2) > 0)
+            SdListNode targetListNode;
+            if (index - (Size / 2) > 0)
             {
                 // Start od ogona
                 targetListNode = tail.Previous;
-                for (int i = 0; i < (Size - position); i++)
+                for (int i = 0; i < (Size - index); i++)
                 {
                     targetListNode = targetListNode.Previous;
                 }
@@ -118,7 +118,7 @@ namespace SDiZO_1.Structures
             {
                 // Start od głowy
                 targetListNode = head.Next;
-                for (int i = 0; i < (position - 1); i++)
+                for (int i = 0; i < (index - 1); i++)
                 {
                     targetListNode = targetListNode.Next;
                 }
@@ -127,10 +127,27 @@ namespace SDiZO_1.Structures
             return targetListNode;
         }
 
+        // Wyszukiwanie elementu o zadanej wartości.
+        // Zwraca indeks elementu lub null jeżeli taki element nie został znaleziony.
+        public SdListNode FindByValue(int value)
+        {
+            SdListNode currentNode = head;
+            for (int i = 0; i < Size; i++)
+            {
+                currentNode = currentNode.Next;
+                if (currentNode.Data == value)
+                {
+                    return currentNode;
+                }
+            }
+
+            return null;
+        }
+
         // Wypisywanie zawartości listy.
         public void SaveData()
         {
-            using (StreamWriter sw = new StreamWriter("./Lista.txt"))
+            using (StreamWriter sw = new StreamWriter("./List_Zawartość.txt"))
             {
                 if (Size > 0)
                 {

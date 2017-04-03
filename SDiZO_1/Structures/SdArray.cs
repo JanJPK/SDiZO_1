@@ -112,10 +112,29 @@ namespace SDiZO_1.Structures
 
         }
 
+        // Wyszukiwanie elementu o zadanej wartości.
+        // Zwraca indeks elementu lub -1 jeżeli taki element nie został znaleziony.
+        public int FindByValue(int value)
+        {
+            int index = 0;
+            while (index < Size)
+            {
+                if (array[index] == value)
+                {
+                    return index;
+                }
+                else
+                {
+                    index++;
+                }
+            }
+            return -1;
+        }
+
         // Wypisywanie zawartości.
         public void SaveData()
         {
-            using (StreamWriter sw = new StreamWriter("./Tablica.txt"))
+            using (StreamWriter sw = new StreamWriter("./Tabl_Zawartość.txt"))
             {
                 if (Size > 0)
                 {
@@ -130,5 +149,7 @@ namespace SDiZO_1.Structures
                 }
             }
         }
+
+
     }
 }

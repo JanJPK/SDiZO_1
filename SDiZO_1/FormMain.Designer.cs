@@ -58,10 +58,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.buttonCreateFile = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBoxAdd = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxAddTargetPosition = new System.Windows.Forms.TextBox();
+            this.textBoxAddTargetValue = new System.Windows.Forms.TextBox();
+            this.radioButtonAddFromFile = new System.Windows.Forms.RadioButton();
+            this.radioButtonAddTarget = new System.Windows.Forms.RadioButton();
             this.buttonAddTarget = new System.Windows.Forms.Button();
             this.textBoxAddFrom = new System.Windows.Forms.TextBox();
             this.textBoxAddTo = new System.Windows.Forms.TextBox();
@@ -73,7 +79,9 @@
             this.radioButtonAddEnd = new System.Windows.Forms.RadioButton();
             this.radioButtonAddBeg = new System.Windows.Forms.RadioButton();
             this.groupBoxDel = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxDelTargetPosition = new System.Windows.Forms.TextBox();
+            this.radioButtonDelTarget = new System.Windows.Forms.RadioButton();
             this.textBoxDelAmount = new System.Windows.Forms.TextBox();
             this.buttonDel = new System.Windows.Forms.Button();
             this.radioButtonDelBeg = new System.Windows.Forms.RadioButton();
@@ -81,7 +89,6 @@
             this.radioButtonDelRng = new System.Windows.Forms.RadioButton();
             this.radioButtonDelEnd = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonDumpContents = new System.Windows.Forms.Button();
             this.checkBoxReset = new System.Windows.Forms.CheckBox();
             this.buttonReset = new System.Windows.Forms.Button();
             this.textBoxActionMultiplier = new System.Windows.Forms.TextBox();
@@ -93,7 +100,12 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
@@ -104,6 +116,7 @@
             this.groupBoxDel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelTree.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelArray
@@ -286,6 +299,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.groupBoxIO);
             this.panel2.Controls.Add(this.groupBoxSearch);
             this.panel2.Controls.Add(this.groupBoxAdd);
@@ -293,7 +307,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(12, 96);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(686, 244);
+            this.panel2.Size = new System.Drawing.Size(686, 285);
             this.panel2.TabIndex = 7;
             // 
             // groupBoxIO
@@ -393,25 +407,36 @@
             // groupBoxSearch
             // 
             this.groupBoxSearch.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.groupBoxSearch.Controls.Add(this.textBox2);
             this.groupBoxSearch.Controls.Add(this.textBox1);
             this.groupBoxSearch.Controls.Add(this.buttonSearch);
             this.groupBoxSearch.Location = new System.Drawing.Point(311, 3);
             this.groupBoxSearch.Name = "groupBoxSearch";
-            this.groupBoxSearch.Size = new System.Drawing.Size(148, 238);
+            this.groupBoxSearch.Size = new System.Drawing.Size(148, 123);
             this.groupBoxSearch.TabIndex = 36;
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Wyszukiwanie";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(6, 13);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(136, 46);
+            this.textBox2.TabIndex = 34;
+            this.textBox2.Text = "Wyszukuje pierwsze wystąpienie zadanej wartości.";
+            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 16);
+            this.textBox1.Location = new System.Drawing.Point(6, 65);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(136, 20);
             this.textBox1.TabIndex = 33;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(6, 209);
+            this.buttonSearch.Location = new System.Drawing.Point(6, 91);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(136, 23);
             this.buttonSearch.TabIndex = 29;
@@ -421,8 +446,12 @@
             // groupBoxAdd
             // 
             this.groupBoxAdd.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.groupBoxAdd.Controls.Add(this.radioButton3);
-            this.groupBoxAdd.Controls.Add(this.radioButton1);
+            this.groupBoxAdd.Controls.Add(this.label2);
+            this.groupBoxAdd.Controls.Add(this.label1);
+            this.groupBoxAdd.Controls.Add(this.textBoxAddTargetPosition);
+            this.groupBoxAdd.Controls.Add(this.textBoxAddTargetValue);
+            this.groupBoxAdd.Controls.Add(this.radioButtonAddFromFile);
+            this.groupBoxAdd.Controls.Add(this.radioButtonAddTarget);
             this.groupBoxAdd.Controls.Add(this.buttonAddTarget);
             this.groupBoxAdd.Controls.Add(this.textBoxAddFrom);
             this.groupBoxAdd.Controls.Add(this.textBoxAddTo);
@@ -435,25 +464,68 @@
             this.groupBoxAdd.Controls.Add(this.radioButtonAddBeg);
             this.groupBoxAdd.Location = new System.Drawing.Point(3, 3);
             this.groupBoxAdd.Name = "groupBoxAdd";
-            this.groupBoxAdd.Size = new System.Drawing.Size(148, 238);
+            this.groupBoxAdd.Size = new System.Drawing.Size(148, 279);
             this.groupBoxAdd.TabIndex = 36;
             this.groupBoxAdd.TabStop = false;
             this.groupBoxAdd.Text = "Dodawanie";
             // 
-            // radioButton1
+            // label2
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(10, 177);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(100, 17);
-            this.radioButton1.TabIndex = 25;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Zadane miejsce";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 224);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Pozycja";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 203);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Wartość";
+            // 
+            // textBoxAddTargetPosition
+            // 
+            this.textBoxAddTargetPosition.Location = new System.Drawing.Point(60, 224);
+            this.textBoxAddTargetPosition.Name = "textBoxAddTargetPosition";
+            this.textBoxAddTargetPosition.Size = new System.Drawing.Size(79, 20);
+            this.textBoxAddTargetPosition.TabIndex = 30;
+            // 
+            // textBoxAddTargetValue
+            // 
+            this.textBoxAddTargetValue.Location = new System.Drawing.Point(60, 200);
+            this.textBoxAddTargetValue.Name = "textBoxAddTargetValue";
+            this.textBoxAddTargetValue.Size = new System.Drawing.Size(79, 20);
+            this.textBoxAddTargetValue.TabIndex = 29;
+            // 
+            // radioButtonAddFromFile
+            // 
+            this.radioButtonAddFromFile.AutoSize = true;
+            this.radioButtonAddFromFile.Location = new System.Drawing.Point(10, 154);
+            this.radioButtonAddFromFile.Name = "radioButtonAddFromFile";
+            this.radioButtonAddFromFile.Size = new System.Drawing.Size(57, 17);
+            this.radioButtonAddFromFile.TabIndex = 26;
+            this.radioButtonAddFromFile.TabStop = true;
+            this.radioButtonAddFromFile.Text = "Z pliku";
+            this.radioButtonAddFromFile.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAddTarget
+            // 
+            this.radioButtonAddTarget.AutoSize = true;
+            this.radioButtonAddTarget.Location = new System.Drawing.Point(10, 177);
+            this.radioButtonAddTarget.Name = "radioButtonAddTarget";
+            this.radioButtonAddTarget.Size = new System.Drawing.Size(100, 17);
+            this.radioButtonAddTarget.TabIndex = 25;
+            this.radioButtonAddTarget.TabStop = true;
+            this.radioButtonAddTarget.Text = "Zadane miejsce";
+            this.radioButtonAddTarget.UseVisualStyleBackColor = true;
             // 
             // buttonAddTarget
             // 
-            this.buttonAddTarget.Location = new System.Drawing.Point(6, 209);
+            this.buttonAddTarget.Location = new System.Drawing.Point(4, 250);
             this.buttonAddTarget.Name = "buttonAddTarget";
             this.buttonAddTarget.Size = new System.Drawing.Size(136, 23);
             this.buttonAddTarget.TabIndex = 11;
@@ -545,7 +617,9 @@
             // groupBoxDel
             // 
             this.groupBoxDel.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.groupBoxDel.Controls.Add(this.radioButton2);
+            this.groupBoxDel.Controls.Add(this.label12);
+            this.groupBoxDel.Controls.Add(this.textBoxDelTargetPosition);
+            this.groupBoxDel.Controls.Add(this.radioButtonDelTarget);
             this.groupBoxDel.Controls.Add(this.textBoxDelAmount);
             this.groupBoxDel.Controls.Add(this.buttonDel);
             this.groupBoxDel.Controls.Add(this.radioButtonDelBeg);
@@ -554,21 +628,37 @@
             this.groupBoxDel.Controls.Add(this.radioButtonDelEnd);
             this.groupBoxDel.Location = new System.Drawing.Point(157, 3);
             this.groupBoxDel.Name = "groupBoxDel";
-            this.groupBoxDel.Size = new System.Drawing.Size(148, 238);
+            this.groupBoxDel.Size = new System.Drawing.Size(148, 279);
             this.groupBoxDel.TabIndex = 35;
             this.groupBoxDel.TabStop = false;
             this.groupBoxDel.Text = "Usuwanie";
             // 
-            // radioButton2
+            // label12
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(9, 108);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(100, 17);
-            this.radioButton2.TabIndex = 26;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Zadane miejsce";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 135);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 13);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "Pozycja";
+            // 
+            // textBoxDelTargetPosition
+            // 
+            this.textBoxDelTargetPosition.Location = new System.Drawing.Point(62, 131);
+            this.textBoxDelTargetPosition.Name = "textBoxDelTargetPosition";
+            this.textBoxDelTargetPosition.Size = new System.Drawing.Size(79, 20);
+            this.textBoxDelTargetPosition.TabIndex = 33;
+            // 
+            // radioButtonDelTarget
+            // 
+            this.radioButtonDelTarget.AutoSize = true;
+            this.radioButtonDelTarget.Location = new System.Drawing.Point(9, 108);
+            this.radioButtonDelTarget.Name = "radioButtonDelTarget";
+            this.radioButtonDelTarget.Size = new System.Drawing.Size(100, 17);
+            this.radioButtonDelTarget.TabIndex = 26;
+            this.radioButtonDelTarget.TabStop = true;
+            this.radioButtonDelTarget.Text = "Zadane miejsce";
+            this.radioButtonDelTarget.UseVisualStyleBackColor = true;
             // 
             // textBoxDelAmount
             // 
@@ -579,7 +669,7 @@
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(6, 209);
+            this.buttonDel.Location = new System.Drawing.Point(6, 250);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(136, 23);
             this.buttonDel.TabIndex = 29;
@@ -632,7 +722,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Tomato;
-            this.panel3.Controls.Add(this.buttonDumpContents);
+            this.panel3.Controls.Add(this.textBox3);
             this.panel3.Controls.Add(this.checkBoxReset);
             this.panel3.Controls.Add(this.buttonReset);
             this.panel3.Controls.Add(this.textBoxActionMultiplier);
@@ -640,22 +730,13 @@
             this.panel3.Controls.Add(this.buttonActionMultiplier);
             this.panel3.Location = new System.Drawing.Point(465, 111);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(221, 73);
+            this.panel3.Size = new System.Drawing.Size(218, 118);
             this.panel3.TabIndex = 25;
-            // 
-            // buttonDumpContents
-            // 
-            this.buttonDumpContents.Location = new System.Drawing.Point(3, 16);
-            this.buttonDumpContents.Name = "buttonDumpContents";
-            this.buttonDumpContents.Size = new System.Drawing.Size(100, 23);
-            this.buttonDumpContents.TabIndex = 30;
-            this.buttonDumpContents.Text = "Podgląd";
-            this.buttonDumpContents.UseVisualStyleBackColor = true;
             // 
             // checkBoxReset
             // 
             this.checkBoxReset.AutoSize = true;
-            this.checkBoxReset.Location = new System.Drawing.Point(3, 48);
+            this.checkBoxReset.Location = new System.Drawing.Point(6, 4);
             this.checkBoxReset.Name = "checkBoxReset";
             this.checkBoxReset.Size = new System.Drawing.Size(54, 17);
             this.checkBoxReset.TabIndex = 29;
@@ -664,7 +745,7 @@
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(57, 45);
+            this.buttonReset.Location = new System.Drawing.Point(6, 27);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(49, 23);
             this.buttonReset.TabIndex = 28;
@@ -674,25 +755,25 @@
             // 
             // textBoxActionMultiplier
             // 
-            this.textBoxActionMultiplier.Location = new System.Drawing.Point(109, 18);
+            this.textBoxActionMultiplier.Location = new System.Drawing.Point(142, 4);
             this.textBoxActionMultiplier.Name = "textBoxActionMultiplier";
-            this.textBoxActionMultiplier.Size = new System.Drawing.Size(100, 20);
+            this.textBoxActionMultiplier.Size = new System.Drawing.Size(70, 20);
             this.textBoxActionMultiplier.TabIndex = 26;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(119, 4);
+            this.label10.Location = new System.Drawing.Point(89, 5);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 13);
+            this.label10.Size = new System.Drawing.Size(53, 13);
             this.label10.TabIndex = 26;
-            this.label10.Text = "Mnożnik operacji";
+            this.label10.Text = "Ilość cykli";
             // 
             // buttonActionMultiplier
             // 
-            this.buttonActionMultiplier.Location = new System.Drawing.Point(109, 44);
+            this.buttonActionMultiplier.Location = new System.Drawing.Point(142, 30);
             this.buttonActionMultiplier.Name = "buttonActionMultiplier";
-            this.buttonActionMultiplier.Size = new System.Drawing.Size(100, 23);
+            this.buttonActionMultiplier.Size = new System.Drawing.Size(70, 23);
             this.buttonActionMultiplier.TabIndex = 27;
             this.buttonActionMultiplier.Text = "Modyfikuj";
             this.buttonActionMultiplier.UseVisualStyleBackColor = true;
@@ -758,22 +839,75 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // radioButton3
+            // textBox3
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(10, 154);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(57, 17);
-            this.radioButton3.TabIndex = 26;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Z pliku";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox3.Location = new System.Drawing.Point(6, 56);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(206, 59);
+            this.textBox3.TabIndex = 35;
+            this.textBox3.Text = "Reset czyści struktury jeden raz lub po każdym cyklu. Ilość cykli określa powtórz" +
+    "enia danych operacji np. dodawania.";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Tomato;
+            this.panel1.Controls.Add(this.checkBox4);
+            this.panel1.Controls.Add(this.checkBox3);
+            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Location = new System.Drawing.Point(465, 232);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(218, 50);
+            this.panel1.TabIndex = 36;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 26);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(80, 17);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "checkBox2";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(112, 25);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(80, 17);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "checkBox3";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(112, 3);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(80, 17);
+            this.checkBox4.TabIndex = 3;
+            this.checkBox4.Text = "checkBox4";
+            this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 482);
+            this.ClientSize = new System.Drawing.Size(710, 385);
             this.Controls.Add(this.panelTree);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelArray);
@@ -800,6 +934,8 @@
             this.panel3.PerformLayout();
             this.panelTree.ResumeLayout(false);
             this.panelTree.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -864,13 +1000,25 @@
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBoxReset;
-        private System.Windows.Forms.Button buttonDumpContents;
         private System.Windows.Forms.Button buttonArraySaveData;
         private System.Windows.Forms.Button buttonListSaveData;
         private System.Windows.Forms.Button buttonHeapSaveData;
         private System.Windows.Forms.Button buttonTreeSaveData;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButtonAddTarget;
+        private System.Windows.Forms.RadioButton radioButtonDelTarget;
+        private System.Windows.Forms.RadioButton radioButtonAddFromFile;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxAddTargetPosition;
+        private System.Windows.Forms.TextBox textBoxAddTargetValue;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxDelTargetPosition;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

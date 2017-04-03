@@ -65,6 +65,7 @@ namespace SDiZO_1
         // Dodawanie.
         private void buttonAddTarget_Click(object sender, EventArgs e)
         {
+            // Sprawdzanie czy wprowadzone liczby są poprawne.
             int addFrom, addTo, addAmount;
             if (!int.TryParse(textBoxAddFrom.Text, out addFrom))
             {
@@ -91,10 +92,14 @@ namespace SDiZO_1
                 return;
             }
 
+            // Wywoływanie funkcji każdej struktury.
             AddSdArray(addFrom, addTo, addAmount);
             AddSdList(addFrom, addTo, addAmount);
             AddSdHeap(addFrom, addTo, addAmount);
             AddSdTree(addFrom, addTo, addAmount);
+
+            // Przywracanie tablicy do null.
+            numberArray = null;
 
             MessageBox.Show("Dodawanie zakończone", "Informacja",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -102,6 +107,7 @@ namespace SDiZO_1
         // Usuwanie.
         private void buttonDel_Click(object sender, EventArgs e)
         {
+            // Sprawdzanie czy wprowadzone liczby są poprawne.
             int delAmount;
             if (!int.TryParse(textBoxDelAmount.Text, out delAmount))
             {
@@ -126,6 +132,7 @@ namespace SDiZO_1
         // Ustawianie mnożnika operacji - każda operacja np. dodawanie zostanie powtórzona tyle razy ile wynosi parametr [cycles].
         private void buttonActionMultiplier_Click(object sender, EventArgs e)
         {
+            // Sprawdzanie czy wprowadzone liczby są poprawne.
             int cyclesAmount;
             if (!int.TryParse(textBoxActionMultiplier.Text, out cyclesAmount))
             {
@@ -154,7 +161,9 @@ namespace SDiZO_1
             SdH = new SdHeap();
             SdT = new SdTree();
         }
-        // Wypisywanie zawartości do pliku.
+
+        // Wypisywanie zawartości do pliku i wyświetlanie.
+        // Jeżeli struktura istnieje - zapisz jej zawartość do pliku a następnie wyświetl.
         private void buttonArraySaveData_Click(object sender, EventArgs e)
         {
             if (SdA != null)
@@ -191,7 +200,6 @@ namespace SDiZO_1
                 displayForm.Show();
             }
         }
-
 
         // Funkcje:
         // Dodawanie.
@@ -277,6 +285,27 @@ namespace SDiZO_1
                         SdA = new SdArray();
                     }
                 }
+            }
+
+            // Dodawanie z pliku.
+            if (radioButtonAddFromFile.Checked)
+            {
+                ReadFile("Input");
+                // Start pomiaru.
+                SdAClock.Start();
+                for (var i = 0; i < arraySize; i++)
+                {
+                    SdA.AddEnd(numberArray[i]);
+                }
+                // Finish pomiaru i zapis.
+                SdAClock.Finish();
+
+            }
+
+            // Dodawanie w zadane miejsce.
+            if (radioButtonAddTarget.Checked)
+            {
+
             }
 
             SdAClock.SaveLog(SdAClock.AverageTime());
@@ -366,6 +395,39 @@ namespace SDiZO_1
                 }
             }
 
+            // Dodawanie z pliku.
+            if (radioButtonAddFromFile.Checked)
+            {
+                ReadFile("Input");
+                // Start pomiaru.
+                SdLClock.Start();
+                for (var i = 0; i < arraySize; i++)
+                {
+                    SdL.AddEnd(numberArray[i]);
+                }
+                // Finish pomiaru i zapis.
+                SdHClock.Finish();
+            }
+
+            // Dodawanie w zadane miejsce.
+            if (radioButtonAddTarget.Checked)
+            {
+                int addTargetValue, addTargetPosition;
+                if (!int.TryParse(textBoxAddTargetValue.Text, out addTargetValue))
+                {
+                    MessageBox.Show("Nieprawidłowa liczba", "Błąd",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!int.TryParse(textBoxAddTargetPosition.Text, out addTargetPosition))
+                {
+                    MessageBox.Show("Nieprawidłowa liczba", "Błąd",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                SdL.Add(addTargetValue, addTargetPosition);
+            }
+
             SdLClock.SaveLog(SdLClock.AverageTime());
             textBoxTimeList.Text = SdLClock.AverageTime();
             textBoxStatusList.Text = "RDY";
@@ -376,11 +438,11 @@ namespace SDiZO_1
             SdHClock = new Clock(textBoxHeapFilename.Text, ("ADDH X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
             textBoxStatusHeap.Text = "WRK";
 
-            for (int j = 0; j < cycles; j++)
+            if (radioButtonAddFromFile.Checked)
             {
-                numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                arraySize = numberArray.Length;
+                // Dodawanie z pliku.
                 // Start pomiaru.
+                ReadFile("Input");
                 SdHClock.Start();
                 for (int i = 0; i < arraySize; i++)
                 {
@@ -388,11 +450,28 @@ namespace SDiZO_1
                 }
                 // Finish pomiaru.
                 SdHClock.Finish();
-
-                // Czyszczenie struktury.
-                if (checkBoxReset.Checked)
+            }
+            else
+            {
+                for (int j = 0; j < cycles; j++)
                 {
-                    SdH = new SdHeap();
+                    // Standardowe dodawanie.
+                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
+                    arraySize = numberArray.Length;
+                    // Start pomiaru.
+                    SdHClock.Start();
+                    for (int i = 0; i < arraySize; i++)
+                    {
+                        SdH.Add(numberArray[i]);
+                    }
+                    // Finish pomiaru.
+                    SdHClock.Finish();
+
+                    // Czyszczenie struktury.
+                    if (checkBoxReset.Checked)
+                    {
+                        SdH = new SdHeap();
+                    }
                 }
             }
 
@@ -406,25 +485,41 @@ namespace SDiZO_1
             SdTClock = new Clock(textBoxTreeFilename.Text, ("ADDT X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
             textBoxStatusTree.Text = "WRK";
 
-            for (int j = 0; j < cycles; j++)
+            if (radioButtonAddFromFile.Checked)
             {
-                numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                arraySize = numberArray.Length;
-                // Start pomiaru.
-                SdTClock.Start();
-                for (int i = 0; i < arraySize; i++)
-                {
-                    SdT.Add(numberArray[i]);
-                }
-                // Finish pomiaru.
-                SdTClock.Finish();
 
-                // Czyszczenie struktury.
-                if (checkBoxReset.Checked)
+            }
+            else
+            {
+                if (radioButtonAddTarget.Checked)
                 {
-                    SdT = new SdTree();
+
+                }
+                else
+                {
+                    // Standardowe dodawanie.
+                    for (int j = 0; j < cycles; j++)
+                    {
+                        numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
+                        arraySize = numberArray.Length;
+                        // Start pomiaru.
+                        SdTClock.Start();
+                        for (int i = 0; i < arraySize; i++)
+                        {
+                            SdT.Add(numberArray[i]);
+                        }
+                        // Finish pomiaru.
+                        SdTClock.Finish();
+
+                        // Czyszczenie struktury.
+                        if (checkBoxReset.Checked)
+                        {
+                            SdT = new SdTree();
+                        }
+                    }
                 }
             }
+            
 
             SdTClock.SaveLog(SdTClock.AverageTime());
             textBoxTimeTree.Text = SdTClock.AverageTime();
@@ -578,7 +673,7 @@ namespace SDiZO_1
             //      następne liczby oddzielone są losowymi białymi znakami
             try
             {
-                using (StreamReader sr = new StreamReader(@".\" + filename))
+                using (StreamReader sr = new StreamReader(@".\" + filename+".txt"))
                 {
                     // Peek() podgląda znak ale go nie zjada
                     // Read() zjada znak wczytując go i przestawiając znacznik o jeden dalej
@@ -650,5 +745,6 @@ namespace SDiZO_1
                 throw;
             }
         }
+        
     }
 }

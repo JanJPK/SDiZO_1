@@ -22,7 +22,7 @@ namespace SDiZO_1.Structures
         }
 
         // Dodawanie węzła w wybrane miejsce.
-        public void AddNode(int number, int position)
+        public void Add(int number, int position)
         {
             if (position <= Size && position >= 0)
             {
@@ -48,7 +48,7 @@ namespace SDiZO_1.Structures
         }
 
         // Dodawanie węzła na koniec.
-        public void AddNodeEnd(int data)
+        public void AddEnd(int data)
         {
             
             SdListNode newListNode = new SdListNode(data);
@@ -65,7 +65,7 @@ namespace SDiZO_1.Structures
         }
 
         // Dodawanie węzła na początek.
-        public void AddNodeBeg(int number)
+        public void AddBeg(int number)
         {
             SdListNode newListNode = new SdListNode(number);
 
@@ -81,7 +81,7 @@ namespace SDiZO_1.Structures
         }
         
         // Usuwanie węzła z wybranego miejsca.
-        public void RemoveNode(int position)
+        public void Delete(int position)
         {
             if (position <= Size)
             {
@@ -95,6 +95,7 @@ namespace SDiZO_1.Structures
             }
             else
             {
+
             }
         }
 
@@ -127,16 +128,30 @@ namespace SDiZO_1.Structures
         }
 
         // Wypisywanie zawartości listy.
-        public void ListContents()
+        public void SaveData()
         {
-
-            SdListNode currentListNode = head.Next;
-            while (currentListNode.Next != null)
+            using (StreamWriter sw = new StreamWriter("./Lista.txt"))
             {
-                currentListNode = currentListNode.Next;
+                if (Size > 0)
+                {
+                    sw.WriteLine("HEAD");
+                    SdListNode currentListNode = head.Next;
+                    while (currentListNode.Next != null)
+                    {
+                        sw.WriteLine(currentListNode.Data);
+                        currentListNode = currentListNode.Next;
+                    }
+                    sw.WriteLine("TAIL");
+                }
+                else
+                {
+                    sw.WriteLine("Lista jest pusta.");
+                }
+                
             }
 
         }
+
     }
 
     // Węzeł listy.

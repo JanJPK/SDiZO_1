@@ -16,7 +16,7 @@ namespace SDiZO_1.Structures
         }
 
         // Dodawanie elementu na koniec.
-        public void AddNumberEnd(int number)
+        public void AddEnd(int number)
         {
             // Utworzenie większej tablicy, przekopiowanie zawartości.
             Size++;
@@ -33,14 +33,14 @@ namespace SDiZO_1.Structures
         }
 
         // Dodawanie elementu na koniec.
-        public void AddNumberBeg(int number)
+        public void AddBeg(int number)
         {
             // Utworzenie większej tablicy, przekopiowanie zawartości.
             Size++;
             int[] newArray = new int[Size];
             for (int i = 0; i < (Size - 1); i++)
             {
-                newArray[i] = array[i];
+                newArray[i+1] = array[i];
             }
             // Dodawanie nowej liczby na sam koniec.
             newArray[0] = number;
@@ -50,7 +50,7 @@ namespace SDiZO_1.Structures
         }
 
         // Dodawanie elementu w wybrane miejsce.
-        public void AddNumberPlus(int number, int index)
+        public void Add(int number, int index)
         {
             // Nie możemy wyjść poza rozmiar tablicy
             if (index < Size && index >= 0)
@@ -85,11 +85,10 @@ namespace SDiZO_1.Structures
         }
 
         // Usuwanie elementu z wybranego miejsca.
-        public void DeleteNumber(int index)
+        public void Delete(int index)
         {
-            if (index < Size && index > 0)
+            if (index < Size && index >= 0)
             {
-                Console.WriteLine("#### USUWAM ELEMENT " + array[index] + " Z MIEJSCA " + index + " ####\n");
                 // [0 -> (index-1)] - i ---> i
                 // [index -> max] - i ---> (i-1)
                 int[] newArray = new int[Size - 1];
@@ -108,21 +107,28 @@ namespace SDiZO_1.Structures
             }
             else
             {
-                Console.WriteLine("#### NIE MOZNA USUNAC, NIEPOPRAWNY INDEX ####\n");
+
             }
 
         }
 
         // Wypisywanie zawartości.
-        public void ListContents()
+        public void SaveData()
         {
-            //Console.WriteLine("#### WYPISYWANIE ZAWARTOSCI TABLICY ####");
-            for (int i = 0; i < array.Length; i++)
+            using (StreamWriter sw = new StreamWriter("./Tablica.txt"))
             {
-                Console.WriteLine("["+i+"] = " + array[i]);
+                if (Size > 0)
+                {
+                    for (int i = 0; i < Size; i++)
+                    {
+                        sw.WriteLine("[" + i + "] = " + array[i]);
+                    }
+                }
+                else
+                {
+                    sw.WriteLine("Tablica jest pusta.");
+                }
             }
-            //Console.WriteLine("#### KONIEC WYPISYWANIA ####\n");
-            
         }
     }
 }

@@ -14,7 +14,7 @@ namespace SDiZO_1.Tools
             array = new int[amount];
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = rng.Next(lowerLimit, upperLimit);
+                array[i] = rng.Next(lowerLimit, upperLimit+1);
             }
             return array;
         }

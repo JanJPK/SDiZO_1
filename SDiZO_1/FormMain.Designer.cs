@@ -78,6 +78,7 @@
             this.radioButtonDelRng = new System.Windows.Forms.RadioButton();
             this.radioButtonDelEnd = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonDumpContents = new System.Windows.Forms.Button();
             this.checkBoxReset = new System.Windows.Forms.CheckBox();
             this.buttonReset = new System.Windows.Forms.Button();
             this.textBoxActionMultiplier = new System.Windows.Forms.TextBox();
@@ -88,7 +89,10 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.buttonDumpContents = new System.Windows.Forms.Button();
+            this.buttonArraySaveData = new System.Windows.Forms.Button();
+            this.buttonListSaveData = new System.Windows.Forms.Button();
+            this.buttonHeapSaveData = new System.Windows.Forms.Button();
+            this.buttonTreeSaveData = new System.Windows.Forms.Button();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
@@ -104,20 +108,21 @@
             // panelArray
             // 
             this.panelArray.BackColor = System.Drawing.Color.LightGreen;
+            this.panelArray.Controls.Add(this.buttonArraySaveData);
             this.panelArray.Controls.Add(this.textBoxArrayFilename);
             this.panelArray.Controls.Add(this.labelArray);
             this.panelArray.Controls.Add(this.textBoxStatusArray);
             this.panelArray.Controls.Add(this.textBoxTimeArray);
             this.panelArray.Location = new System.Drawing.Point(12, 12);
             this.panelArray.Name = "panelArray";
-            this.panelArray.Size = new System.Drawing.Size(167, 54);
+            this.panelArray.Size = new System.Drawing.Size(167, 78);
             this.panelArray.TabIndex = 2;
             // 
             // textBoxArrayFilename
             // 
-            this.textBoxArrayFilename.Location = new System.Drawing.Point(80, 5);
+            this.textBoxArrayFilename.Location = new System.Drawing.Point(3, 54);
             this.textBoxArrayFilename.Name = "textBoxArrayFilename";
-            this.textBoxArrayFilename.Size = new System.Drawing.Size(84, 20);
+            this.textBoxArrayFilename.Size = new System.Drawing.Size(71, 20);
             this.textBoxArrayFilename.TabIndex = 5;
             this.textBoxArrayFilename.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -152,20 +157,21 @@
             // panelList
             // 
             this.panelList.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.panelList.Controls.Add(this.buttonListSaveData);
             this.panelList.Controls.Add(this.textBoxListFilename);
             this.panelList.Controls.Add(this.labelList);
             this.panelList.Controls.Add(this.textBoxStatusList);
             this.panelList.Controls.Add(this.textBoxTimeList);
             this.panelList.Location = new System.Drawing.Point(185, 12);
             this.panelList.Name = "panelList";
-            this.panelList.Size = new System.Drawing.Size(167, 54);
+            this.panelList.Size = new System.Drawing.Size(167, 78);
             this.panelList.TabIndex = 5;
             // 
             // textBoxListFilename
             // 
-            this.textBoxListFilename.Location = new System.Drawing.Point(80, 5);
+            this.textBoxListFilename.Location = new System.Drawing.Point(3, 53);
             this.textBoxListFilename.Name = "textBoxListFilename";
-            this.textBoxListFilename.Size = new System.Drawing.Size(84, 20);
+            this.textBoxListFilename.Size = new System.Drawing.Size(71, 20);
             this.textBoxListFilename.TabIndex = 6;
             this.textBoxListFilename.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -200,20 +206,21 @@
             // panelHeap
             // 
             this.panelHeap.BackColor = System.Drawing.Color.PeachPuff;
+            this.panelHeap.Controls.Add(this.buttonHeapSaveData);
             this.panelHeap.Controls.Add(this.textBoxHeapFilename);
             this.panelHeap.Controls.Add(this.labelHeap);
             this.panelHeap.Controls.Add(this.textBoxStatusHeap);
             this.panelHeap.Controls.Add(this.textBoxTimeHeap);
             this.panelHeap.Location = new System.Drawing.Point(358, 12);
             this.panelHeap.Name = "panelHeap";
-            this.panelHeap.Size = new System.Drawing.Size(167, 54);
+            this.panelHeap.Size = new System.Drawing.Size(167, 78);
             this.panelHeap.TabIndex = 6;
             // 
             // textBoxHeapFilename
             // 
-            this.textBoxHeapFilename.Location = new System.Drawing.Point(78, 5);
+            this.textBoxHeapFilename.Location = new System.Drawing.Point(3, 53);
             this.textBoxHeapFilename.Name = "textBoxHeapFilename";
-            this.textBoxHeapFilename.Size = new System.Drawing.Size(84, 20);
+            this.textBoxHeapFilename.Size = new System.Drawing.Size(71, 20);
             this.textBoxHeapFilename.TabIndex = 7;
             this.textBoxHeapFilename.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -253,7 +260,7 @@
             this.panel2.Controls.Add(this.groupBoxAdd);
             this.panel2.Controls.Add(this.groupBoxDel);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(12, 72);
+            this.panel2.Location = new System.Drawing.Point(12, 96);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(686, 184);
             this.panel2.TabIndex = 7;
@@ -604,6 +611,15 @@
             this.panel3.Size = new System.Drawing.Size(221, 73);
             this.panel3.TabIndex = 25;
             // 
+            // buttonDumpContents
+            // 
+            this.buttonDumpContents.Location = new System.Drawing.Point(3, 16);
+            this.buttonDumpContents.Name = "buttonDumpContents";
+            this.buttonDumpContents.Size = new System.Drawing.Size(100, 23);
+            this.buttonDumpContents.TabIndex = 30;
+            this.buttonDumpContents.Text = "Podgląd";
+            this.buttonDumpContents.UseVisualStyleBackColor = true;
+            // 
             // checkBoxReset
             // 
             this.checkBoxReset.AutoSize = true;
@@ -653,21 +669,22 @@
             // panelTree
             // 
             this.panelTree.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.panelTree.Controls.Add(this.buttonTreeSaveData);
             this.panelTree.Controls.Add(this.textBox4);
             this.panelTree.Controls.Add(this.labelTree);
             this.panelTree.Controls.Add(this.textBoxStatusTree);
             this.panelTree.Controls.Add(this.textBoxTimeTree);
             this.panelTree.Location = new System.Drawing.Point(531, 12);
             this.panelTree.Name = "panelTree";
-            this.panelTree.Size = new System.Drawing.Size(167, 54);
+            this.panelTree.Size = new System.Drawing.Size(167, 78);
             this.panelTree.TabIndex = 5;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(80, 5);
+            this.textBox4.Location = new System.Drawing.Point(3, 54);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(84, 20);
+            this.textBox4.Size = new System.Drawing.Size(74, 20);
             this.textBox4.TabIndex = 8;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -699,20 +716,51 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // buttonDumpContents
+            // buttonArraySaveData
             // 
-            this.buttonDumpContents.Location = new System.Drawing.Point(3, 16);
-            this.buttonDumpContents.Name = "buttonDumpContents";
-            this.buttonDumpContents.Size = new System.Drawing.Size(100, 23);
-            this.buttonDumpContents.TabIndex = 30;
-            this.buttonDumpContents.Text = "Podgląd";
-            this.buttonDumpContents.UseVisualStyleBackColor = true;
+            this.buttonArraySaveData.Location = new System.Drawing.Point(80, 52);
+            this.buttonArraySaveData.Name = "buttonArraySaveData";
+            this.buttonArraySaveData.Size = new System.Drawing.Size(84, 23);
+            this.buttonArraySaveData.TabIndex = 25;
+            this.buttonArraySaveData.Text = "Wypis";
+            this.buttonArraySaveData.UseVisualStyleBackColor = true;
+            this.buttonArraySaveData.Click += new System.EventHandler(this.buttonArraySaveData_Click);
+            // 
+            // buttonListSaveData
+            // 
+            this.buttonListSaveData.Location = new System.Drawing.Point(80, 51);
+            this.buttonListSaveData.Name = "buttonListSaveData";
+            this.buttonListSaveData.Size = new System.Drawing.Size(84, 23);
+            this.buttonListSaveData.TabIndex = 26;
+            this.buttonListSaveData.Text = "Wypis";
+            this.buttonListSaveData.UseVisualStyleBackColor = true;
+            this.buttonListSaveData.Click += new System.EventHandler(this.buttonListSaveData_Click);
+            // 
+            // buttonHeapSaveData
+            // 
+            this.buttonHeapSaveData.Location = new System.Drawing.Point(80, 51);
+            this.buttonHeapSaveData.Name = "buttonHeapSaveData";
+            this.buttonHeapSaveData.Size = new System.Drawing.Size(84, 23);
+            this.buttonHeapSaveData.TabIndex = 27;
+            this.buttonHeapSaveData.Text = "Wypis";
+            this.buttonHeapSaveData.UseVisualStyleBackColor = true;
+            this.buttonHeapSaveData.Click += new System.EventHandler(this.buttonHeapSaveData_Click);
+            // 
+            // buttonTreeSaveData
+            // 
+            this.buttonTreeSaveData.Location = new System.Drawing.Point(80, 52);
+            this.buttonTreeSaveData.Name = "buttonTreeSaveData";
+            this.buttonTreeSaveData.Size = new System.Drawing.Size(84, 23);
+            this.buttonTreeSaveData.TabIndex = 28;
+            this.buttonTreeSaveData.Text = "Wypis";
+            this.buttonTreeSaveData.UseVisualStyleBackColor = true;
+            this.buttonTreeSaveData.Click += new System.EventHandler(this.buttonTreeSaveData_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 268);
+            this.ClientSize = new System.Drawing.Size(710, 285);
             this.Controls.Add(this.panelTree);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelArray);
@@ -806,5 +854,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBoxReset;
         private System.Windows.Forms.Button buttonDumpContents;
+        private System.Windows.Forms.Button buttonArraySaveData;
+        private System.Windows.Forms.Button buttonListSaveData;
+        private System.Windows.Forms.Button buttonHeapSaveData;
+        private System.Windows.Forms.Button buttonTreeSaveData;
     }
 }

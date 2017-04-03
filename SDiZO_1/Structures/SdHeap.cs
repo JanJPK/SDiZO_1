@@ -31,7 +31,7 @@ namespace SDiZO_1.Structures
         }
 
         // Dodawanie elementu.
-        public void Insert(int number)
+        public void Add(int number)
         {
             // Powiększanie tablicy.
             Size++;
@@ -55,7 +55,7 @@ namespace SDiZO_1.Structures
         }
 
         // Usuwanie korzenia.
-        public void Pop()
+        public void Delete()
         {
             /*
             * numer lewego syna = 2k + 1
@@ -134,19 +134,53 @@ namespace SDiZO_1.Structures
             }
         }
         
-        // Wypisywanie zawartości.
-        public void ListContents()
+        // Wypisywanie zawartości do pliku.
+        public void SaveData()
         {
-            //Console.WriteLine("#### WYPISYWANIE ZAWARTOSCI KOPCA ####");
-            //Console.Write("#### FORMA TABLICY [ ");
-            for (int i = 0; i < array.Length; i++)
+            using (StreamWriter sw = new StreamWriter("./Kopiec.txt"))
             {
-                Console.Write(array[i] + " ");
-            }
-            //Console.Write("]\n");
-            //Console.WriteLine("### FORMA KOPCA");
+                if (Size > 0)
+                {
+                    sw.WriteLine("Zawartość w formie tablicy:");
+                    sw.Write("[");
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        sw.Write(array[i] + " ");
+                    }
+                    sw.Write("]\n");
 
-            //for(int i = 0;i<Size;)
+                    sw.WriteLine("Zawartość w formie drzewa:");
+                    HeapForm(0, " ", sw);
+                }
+                else
+                {
+                    sw.WriteLine("Kopiec jest pusty.");
+                }
+
+            }
+
+        }
+
+        private void HeapForm(int index, String prefix, StreamWriter sw)
+        {
+            if (index > array.Length)
+            {
+                sw.WriteLine(prefix + "-- [brak]");
+            }
+            else
+            {
+                sw.WriteLine(prefix + "-- [" + array[index]+"]");
+                if ((index * 2 + 1) < array.Length)
+                {
+                    HeapForm((index * 2 + 1), prefix + "|  ", sw);
+                }
+
+                if ((index * 2 + 2) < array.Length)
+                {
+                    HeapForm((index * 2 + 2), prefix + "|  ", sw);
+                }
+
+            }
         }
     }
 }

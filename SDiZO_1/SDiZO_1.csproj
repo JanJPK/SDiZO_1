@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Structures\SdTree.cs" />
     <Compile Include="Tools\Clock.cs" />
     <Compile Include="Tools\DataGenerator.cs" />
     <Compile Include="FormMain.cs">

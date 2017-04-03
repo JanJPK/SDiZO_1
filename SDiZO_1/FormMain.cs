@@ -197,7 +197,7 @@ namespace SDiZO_1
                     SdLClock.Start();
                     for (int i = 0; i < arraySize; i++)
                     {
-                        SdL.AddSdNodePlus(numberArray[i], position);
+                        SdL.AddNode(numberArray[i], position);
                     }
                     // Finish pomiaru.
                     SdLClock.Finish();
@@ -223,7 +223,7 @@ namespace SDiZO_1
                     SdLClock.Start();
                     for (int i = 0; i < arraySize; i++)
                     {
-                        SdL.AddSdNodeBeg(numberArray[i]);
+                        SdL.AddNodeBeg(numberArray[i]);
                     }
                     // Finish pomiaru.
                     SdLClock.Finish();
@@ -248,7 +248,7 @@ namespace SDiZO_1
                     SdLClock.Start();
                     for (int i = 0; i < arraySize; i++)
                     {
-                        SdL.AddSdNodeEnd(numberArray[i]);
+                        SdL.AddNodeEnd(numberArray[i]);
                     }
                     // Finish pomiaru.
                     SdLClock.Finish();

@@ -11,8 +11,8 @@ namespace SDiZO_1.Structures
     {
         // Property i zmienne.
         public int Size { get; set; }
-        private SdNode head = new SdNode();
-        private SdNode tail = new SdNode();
+        private SdListNode head = new SdListNode();
+        private SdListNode tail = new SdListNode();
 
         // Konstruktor.
         public SdList()
@@ -22,153 +22,141 @@ namespace SDiZO_1.Structures
         }
 
         // Dodawanie węzła w wybrane miejsce.
-        public void AddSdNodePlus(int number, int position)
+        public void AddNode(int number, int position)
         {
             if (position <= Size && position >= 0)
             {
                 
-                //Console.WriteLine("#### DODAWANIE " + number + " NA MIEJSCE " + position + " ####");
-                SdNode newNode = new SdNode(number);
-                // Szukamy węzła na pozycji [position] - zostanie on przesunięty w kierunku ogona i zastąpiony przez [newNode].
-                SdNode movedNode = FindNode(position);
+                SdListNode newListNode = new SdListNode(number);
+                // Szukamy węzła na pozycji [position] - zostanie on przesunięty w kierunku ogona i zastąpiony przez [newListNode].
+                SdListNode movedListNode = FindNode(position);
                 // Łączenie nowego węzła z poprzednikiem
-                (movedNode.Previous).Next = newNode;
-                newNode.Previous = movedNode.Previous;
+                (movedListNode.Previous).Next = newListNode;
+                newListNode.Previous = movedListNode.Previous;
 
                 // Łączenie węzła z węzłem przesuniętym
-                newNode.Next = movedNode;
-                movedNode.Previous = newNode;
+                newListNode.Next = movedListNode;
+                movedListNode.Previous = newListNode;
 
                 Size++;
             }
             else
             {
-                //Console.WriteLine("#### NIE MOZNA DODAC, NIEPOPRAWNY INDEX ####\n");
+
             }
             
         }
 
         // Dodawanie węzła na koniec.
-        public void AddSdNodeEnd(int number)
+        public void AddNodeEnd(int data)
         {
             
-            SdNode newNode = new SdNode(number);
-            //Console.WriteLine("#### DODAWANIE " + number + " NA KONIEC LISTY ####\n");
+            SdListNode newListNode = new SdListNode(data);
 
             // Łączenie z poprzednim węzłem
-            (tail.Previous).Next = newNode;
-            newNode.Previous = (tail.Previous);
+            (tail.Previous).Next = newListNode;
+            newListNode.Previous = (tail.Previous);
 
             // Łączenie z ogonem
-            tail.Previous = newNode;
-            newNode.Next = tail;
+            tail.Previous = newListNode;
+            newListNode.Next = tail;
 
             Size++;
         }
 
         // Dodawanie węzła na początek.
-        public void AddSdNodeBeg(int number)
+        public void AddNodeBeg(int number)
         {
-            SdNode newNode = new SdNode(number);
-            //Console.WriteLine("#### DODAWANIE " + number + " NA POCZATEK LISTY ####\n");
+            SdListNode newListNode = new SdListNode(number);
 
             // Łączenie z następnym węzłem
-            (head.Next).Previous = newNode;
-            newNode.Next = head.Next;
+            (head.Next).Previous = newListNode;
+            newListNode.Next = head.Next;
 
             // Łączenie z głową
-            head.Next = newNode;
-            newNode.Previous = head;
+            head.Next = newListNode;
+            newListNode.Previous = head;
 
             Size++;
         }
         
         // Usuwanie węzła z wybranego miejsca.
-        public void RemoveSdNode(int position)
+        public void RemoveNode(int position)
         {
             if (position <= Size)
             {
-
-                //Console.WriteLine("#### USUWANIE Z POZYCJI "+ position + " ####");
+                
                 // Szukamy węzła na pozycji [position] - zostanie on usunięty.
-                SdNode targetNode = FindNode(position);
-                // Łączenie węzła poprzedniego i następnego dla [targetNode] ze sobą.
-                (targetNode.Previous).Next = targetNode.Next;
-                (targetNode.Next).Previous = targetNode.Previous;
+                SdListNode targetListNode = FindNode(position);
+                // Łączenie węzła poprzedniego i następnego dla [targetListNode] ze sobą.
+                (targetListNode.Previous).Next = targetListNode.Next;
+                (targetListNode.Next).Previous = targetListNode.Previous;
                 Size--;
             }
             else
             {
-                //Console.WriteLine("#### NIE MOZNA DODAC, NIEPOPRAWNY INDEX ####\n");
             }
         }
 
         // Funkcja znajdująca węzeł na wybranej pozycji.
         // Jeżeli [cel] - [połowa rozmiaru] > 0, to szybciej tam dojdziemy od ogona.
         // W innym przypadku startujemy od głowy.
-        public SdNode FindNode(int position)
+        public SdListNode FindNode(int position)
         {
-            SdNode targetNode;
+            SdListNode targetListNode = null;
             if (position - (Size / 2) > 0)
             {
                 // Start od ogona
-                // Console.WriteLine("### START OD OGONA\n");
-                targetNode = tail.Previous;
+                targetListNode = tail.Previous;
                 for (int i = 0; i < (Size - position); i++)
                 {
-                    targetNode = targetNode.Previous;
+                    targetListNode = targetListNode.Previous;
                 }
             }
             else
             {
                 // Start od głowy
-                // Console.WriteLine("### START OD GLOWY\n");
-                targetNode = head.Next;
+                targetListNode = head.Next;
                 for (int i = 0; i < (position - 1); i++)
                 {
-                    targetNode = targetNode.Next;
+                    targetListNode = targetListNode.Next;
                 }
             }
 
-            return targetNode;
+            return targetListNode;
         }
 
         // Wypisywanie zawartości listy.
         public void ListContents()
         {
-            //Console.WriteLine("#### WYPISYWANIE ZAWARTOSCI LISTY ####");
-            //Console.WriteLine("#### ROZMIAR = " + Size);
-            //Console.WriteLine("## GLOWA");
-            SdNode currentNode = head.Next;
-            while (currentNode.Next != null)
+
+            SdListNode currentListNode = head.Next;
+            while (currentListNode.Next != null)
             {
-                //Console.WriteLine("# "+currentNode.Number);
-                currentNode = currentNode.Next;
+                currentListNode = currentListNode.Next;
             }
-            //Console.WriteLine("## OGON");
-            //Console.WriteLine("### KONIEC WYPISYWANIA\n");
-            
+
         }
     }
 
     // Węzeł listy.
-    class SdNode
+    class SdListNode
     {
         // Przechowywane dane
-        public int Number { get; set; }
+        public int Data { get; set; }
 
         // Następny węzeł
-        public SdNode Next { get; set; }
+        public SdListNode Next { get; set; }
 
         // Poprzedni węzeł
-        public SdNode Previous { get; set; }
+        public SdListNode Previous { get; set; }
 
         // Konstruktory
-        public SdNode(int number)
+        public SdListNode(int data)
         {
-            Number = number;
+            Data = data;
         }
-        public SdNode()
+        public SdListNode()
         {
             
         }

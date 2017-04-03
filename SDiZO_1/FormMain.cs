@@ -160,8 +160,8 @@ namespace SDiZO_1
             if (SdA != null)
             {
                 SdA.SaveData();
-                MessageBox.Show("Zawartość zapisana do pliku", "Informacja",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var displayForm = new DisplayForm("Tabl_Zawartość");
+                displayForm.Show();
             }
         }
         private void buttonListSaveData_Click(object sender, EventArgs e)
@@ -169,8 +169,8 @@ namespace SDiZO_1
             if (SdL != null)
             {
                 SdL.SaveData();
-                MessageBox.Show("Zawartość zapisana do pliku", "Informacja",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var displayForm = new DisplayForm("List_Zawartość");
+                displayForm.Show();
             }
         }
         private void buttonHeapSaveData_Click(object sender, EventArgs e)
@@ -178,8 +178,8 @@ namespace SDiZO_1
             if (SdH != null)
             {
                 SdH.SaveData();
-                MessageBox.Show("Zawartość zapisana do pliku", "Informacja",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var displayForm = new DisplayForm("Kopc_Zawartość");
+                displayForm.Show();
             }
         }
         private void buttonTreeSaveData_Click(object sender, EventArgs e)
@@ -187,8 +187,8 @@ namespace SDiZO_1
             if (SdT != null)
             {
                 SdT.SaveData();
-                MessageBox.Show("Zawartość zapisana do pliku", "Informacja",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var displayForm = new DisplayForm("Drzw_Zawartość");
+                displayForm.Show();
             }
         }
 
@@ -650,7 +650,5 @@ namespace SDiZO_1
                 throw;
             }
         }
-
-
     }
 }

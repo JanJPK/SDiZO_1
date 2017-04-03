@@ -61,6 +61,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBoxAdd = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.buttonAddTarget = new System.Windows.Forms.Button();
             this.textBoxAddFrom = new System.Windows.Forms.TextBox();
             this.textBoxAddTo = new System.Windows.Forms.TextBox();
@@ -72,6 +73,7 @@
             this.radioButtonAddEnd = new System.Windows.Forms.RadioButton();
             this.radioButtonAddBeg = new System.Windows.Forms.RadioButton();
             this.groupBoxDel = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.textBoxDelAmount = new System.Windows.Forms.TextBox();
             this.buttonDel = new System.Windows.Forms.Button();
             this.radioButtonDelBeg = new System.Windows.Forms.RadioButton();
@@ -91,8 +93,7 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
@@ -103,12 +104,11 @@
             this.groupBoxDel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelTree.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelArray
             // 
-            this.panelArray.BackColor = System.Drawing.Color.LightGreen;
+            this.panelArray.BackColor = System.Drawing.Color.SteelBlue;
             this.panelArray.Controls.Add(this.buttonArraySaveData);
             this.panelArray.Controls.Add(this.textBoxArrayFilename);
             this.panelArray.Controls.Add(this.labelArray);
@@ -226,7 +226,7 @@
             // 
             // panelHeap
             // 
-            this.panelHeap.BackColor = System.Drawing.Color.PeachPuff;
+            this.panelHeap.BackColor = System.Drawing.Color.YellowGreen;
             this.panelHeap.Controls.Add(this.buttonHeapSaveData);
             this.panelHeap.Controls.Add(this.textBoxHeapFilename);
             this.panelHeap.Controls.Add(this.labelHeap);
@@ -293,7 +293,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(12, 96);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(686, 184);
+            this.panel2.Size = new System.Drawing.Size(686, 244);
             this.panel2.TabIndex = 7;
             // 
             // groupBoxIO
@@ -397,7 +397,7 @@
             this.groupBoxSearch.Controls.Add(this.buttonSearch);
             this.groupBoxSearch.Location = new System.Drawing.Point(311, 3);
             this.groupBoxSearch.Name = "groupBoxSearch";
-            this.groupBoxSearch.Size = new System.Drawing.Size(148, 178);
+            this.groupBoxSearch.Size = new System.Drawing.Size(148, 238);
             this.groupBoxSearch.TabIndex = 36;
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Wyszukiwanie";
@@ -411,7 +411,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(6, 153);
+            this.buttonSearch.Location = new System.Drawing.Point(6, 209);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(136, 23);
             this.buttonSearch.TabIndex = 29;
@@ -421,6 +421,8 @@
             // groupBoxAdd
             // 
             this.groupBoxAdd.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.groupBoxAdd.Controls.Add(this.radioButton3);
+            this.groupBoxAdd.Controls.Add(this.radioButton1);
             this.groupBoxAdd.Controls.Add(this.buttonAddTarget);
             this.groupBoxAdd.Controls.Add(this.textBoxAddFrom);
             this.groupBoxAdd.Controls.Add(this.textBoxAddTo);
@@ -433,14 +435,25 @@
             this.groupBoxAdd.Controls.Add(this.radioButtonAddBeg);
             this.groupBoxAdd.Location = new System.Drawing.Point(3, 3);
             this.groupBoxAdd.Name = "groupBoxAdd";
-            this.groupBoxAdd.Size = new System.Drawing.Size(148, 178);
+            this.groupBoxAdd.Size = new System.Drawing.Size(148, 238);
             this.groupBoxAdd.TabIndex = 36;
             this.groupBoxAdd.TabStop = false;
             this.groupBoxAdd.Text = "Dodawanie";
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(10, 177);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(100, 17);
+            this.radioButton1.TabIndex = 25;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Zadane miejsce";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // buttonAddTarget
             // 
-            this.buttonAddTarget.Location = new System.Drawing.Point(6, 152);
+            this.buttonAddTarget.Location = new System.Drawing.Point(6, 209);
             this.buttonAddTarget.Name = "buttonAddTarget";
             this.buttonAddTarget.Size = new System.Drawing.Size(136, 23);
             this.buttonAddTarget.TabIndex = 11;
@@ -532,6 +545,7 @@
             // groupBoxDel
             // 
             this.groupBoxDel.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.groupBoxDel.Controls.Add(this.radioButton2);
             this.groupBoxDel.Controls.Add(this.textBoxDelAmount);
             this.groupBoxDel.Controls.Add(this.buttonDel);
             this.groupBoxDel.Controls.Add(this.radioButtonDelBeg);
@@ -540,10 +554,21 @@
             this.groupBoxDel.Controls.Add(this.radioButtonDelEnd);
             this.groupBoxDel.Location = new System.Drawing.Point(157, 3);
             this.groupBoxDel.Name = "groupBoxDel";
-            this.groupBoxDel.Size = new System.Drawing.Size(148, 178);
+            this.groupBoxDel.Size = new System.Drawing.Size(148, 238);
             this.groupBoxDel.TabIndex = 35;
             this.groupBoxDel.TabStop = false;
             this.groupBoxDel.Text = "Usuwanie";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(9, 108);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(100, 17);
+            this.radioButton2.TabIndex = 26;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Zadane miejsce";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // textBoxDelAmount
             // 
@@ -554,7 +579,7 @@
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(6, 153);
+            this.buttonDel.Location = new System.Drawing.Point(6, 209);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(136, 23);
             this.buttonDel.TabIndex = 29;
@@ -675,7 +700,7 @@
             // 
             // panelTree
             // 
-            this.panelTree.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.panelTree.BackColor = System.Drawing.Color.ForestGreen;
             this.panelTree.Controls.Add(this.buttonTreeSaveData);
             this.panelTree.Controls.Add(this.textBoxTreeFilename);
             this.panelTree.Controls.Add(this.labelTree);
@@ -733,31 +758,22 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // panel1
+            // radioButton3
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Location = new System.Drawing.Point(9, 286);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(686, 184);
-            this.panel1.TabIndex = 38;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(148, 178);
-            this.groupBox2.TabIndex = 36;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Wyszukiwanie";
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(10, 154);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(57, 17);
+            this.radioButton3.TabIndex = 26;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Z pliku";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 482);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelTree);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelArray);
@@ -784,7 +800,6 @@
             this.panel3.PerformLayout();
             this.panelTree.ResumeLayout(false);
             this.panelTree.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -854,7 +869,8 @@
         private System.Windows.Forms.Button buttonListSaveData;
         private System.Windows.Forms.Button buttonHeapSaveData;
         private System.Windows.Forms.Button buttonTreeSaveData;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
     }
 }

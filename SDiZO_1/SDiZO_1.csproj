@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DisplayForm.Designer.cs">
+      <DependentUpon>DisplayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Structures\SdTree.cs" />
     <Compile Include="Tools\Clock.cs" />
     <Compile Include="Tools\DataGenerator.cs" />
@@ -71,6 +77,9 @@
     <Content Include="Derelict.txt" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DisplayForm.resx">
+      <DependentUpon>DisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

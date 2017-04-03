@@ -1,4 +1,7 @@
-﻿namespace SDiZO_1.Structures
+﻿using System;
+using System.IO;
+
+namespace SDiZO_1.Structures
 {
     public class SdTree
     {
@@ -16,11 +19,12 @@
         // Jeżeli jest mniejszy, przechodzimy do lewego dziecka.
         // Jeżeli jest większy/równy, przechodzimy do prawego dziecka.
         // Gdy nie ma dzieci, dodajemy go tam.
-        public void Insert(int number)
+        public void Add(int number)
         {
             if (Size == 0)
             {
                 root = new SdTreeNode(number);
+                Size++;
             }
             else
             {
@@ -60,7 +64,44 @@
                         }
                     }
                 }
-                
+                Size++;
+
+            }
+        }
+
+
+        // Wypisywanie zawartości do pliku.
+        public void SaveData()
+        {
+            using (StreamWriter sw = new StreamWriter("./Drzewo.txt"))
+            {
+                if (Size > 0)
+                {
+                    sw.WriteLine("Górna gałąź - lewa strona; Dolna - prawa strona");
+                    HeapForm(root, " ", sw);
+                }
+                else
+                {
+                    sw.WriteLine("Drzewo jest puste.");
+                }
+
+            }
+
+        }
+
+        private void HeapForm(SdTreeNode node, String prefix, StreamWriter sw)
+        {
+            
+            if (node == null)
+            {
+                sw.WriteLine(prefix + "-- [brak]");
+            }
+            else
+            {
+                sw.WriteLine(prefix + "-- [" + node.Data + "]");
+                HeapForm(node.Left, prefix + "|  ", sw);
+                HeapForm(node.Right, prefix + "|  ", sw);
+
             }
         }
     }

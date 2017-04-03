@@ -29,16 +29,19 @@
         private void InitializeComponent()
         {
             this.panelArray = new System.Windows.Forms.Panel();
+            this.buttonArraySaveData = new System.Windows.Forms.Button();
             this.textBoxArrayFilename = new System.Windows.Forms.TextBox();
             this.labelArray = new System.Windows.Forms.Label();
             this.textBoxStatusArray = new System.Windows.Forms.TextBox();
             this.textBoxTimeArray = new System.Windows.Forms.TextBox();
             this.panelList = new System.Windows.Forms.Panel();
+            this.buttonListSaveData = new System.Windows.Forms.Button();
             this.textBoxListFilename = new System.Windows.Forms.TextBox();
             this.labelList = new System.Windows.Forms.Label();
             this.textBoxStatusList = new System.Windows.Forms.TextBox();
             this.textBoxTimeList = new System.Windows.Forms.TextBox();
             this.panelHeap = new System.Windows.Forms.Panel();
+            this.buttonHeapSaveData = new System.Windows.Forms.Button();
             this.textBoxHeapFilename = new System.Windows.Forms.TextBox();
             this.labelHeap = new System.Windows.Forms.Label();
             this.textBoxStatusHeap = new System.Windows.Forms.TextBox();
@@ -85,14 +88,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.buttonActionMultiplier = new System.Windows.Forms.Button();
             this.panelTree = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.buttonTreeSaveData = new System.Windows.Forms.Button();
+            this.textBoxTreeFilename = new System.Windows.Forms.TextBox();
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.buttonArraySaveData = new System.Windows.Forms.Button();
-            this.buttonListSaveData = new System.Windows.Forms.Button();
-            this.buttonHeapSaveData = new System.Windows.Forms.Button();
-            this.buttonTreeSaveData = new System.Windows.Forms.Button();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
@@ -117,6 +117,16 @@
             this.panelArray.Name = "panelArray";
             this.panelArray.Size = new System.Drawing.Size(167, 78);
             this.panelArray.TabIndex = 2;
+            // 
+            // buttonArraySaveData
+            // 
+            this.buttonArraySaveData.Location = new System.Drawing.Point(80, 52);
+            this.buttonArraySaveData.Name = "buttonArraySaveData";
+            this.buttonArraySaveData.Size = new System.Drawing.Size(84, 23);
+            this.buttonArraySaveData.TabIndex = 25;
+            this.buttonArraySaveData.Text = "Wypis";
+            this.buttonArraySaveData.UseVisualStyleBackColor = true;
+            this.buttonArraySaveData.Click += new System.EventHandler(this.buttonArraySaveData_Click);
             // 
             // textBoxArrayFilename
             // 
@@ -167,6 +177,16 @@
             this.panelList.Size = new System.Drawing.Size(167, 78);
             this.panelList.TabIndex = 5;
             // 
+            // buttonListSaveData
+            // 
+            this.buttonListSaveData.Location = new System.Drawing.Point(80, 51);
+            this.buttonListSaveData.Name = "buttonListSaveData";
+            this.buttonListSaveData.Size = new System.Drawing.Size(84, 23);
+            this.buttonListSaveData.TabIndex = 26;
+            this.buttonListSaveData.Text = "Wypis";
+            this.buttonListSaveData.UseVisualStyleBackColor = true;
+            this.buttonListSaveData.Click += new System.EventHandler(this.buttonListSaveData_Click);
+            // 
             // textBoxListFilename
             // 
             this.textBoxListFilename.Location = new System.Drawing.Point(3, 53);
@@ -215,6 +235,16 @@
             this.panelHeap.Name = "panelHeap";
             this.panelHeap.Size = new System.Drawing.Size(167, 78);
             this.panelHeap.TabIndex = 6;
+            // 
+            // buttonHeapSaveData
+            // 
+            this.buttonHeapSaveData.Location = new System.Drawing.Point(80, 51);
+            this.buttonHeapSaveData.Name = "buttonHeapSaveData";
+            this.buttonHeapSaveData.Size = new System.Drawing.Size(84, 23);
+            this.buttonHeapSaveData.TabIndex = 27;
+            this.buttonHeapSaveData.Text = "Wypis";
+            this.buttonHeapSaveData.UseVisualStyleBackColor = true;
+            this.buttonHeapSaveData.Click += new System.EventHandler(this.buttonHeapSaveData_Click);
             // 
             // textBoxHeapFilename
             // 
@@ -670,7 +700,7 @@
             // 
             this.panelTree.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.panelTree.Controls.Add(this.buttonTreeSaveData);
-            this.panelTree.Controls.Add(this.textBox4);
+            this.panelTree.Controls.Add(this.textBoxTreeFilename);
             this.panelTree.Controls.Add(this.labelTree);
             this.panelTree.Controls.Add(this.textBoxStatusTree);
             this.panelTree.Controls.Add(this.textBoxTimeTree);
@@ -679,14 +709,24 @@
             this.panelTree.Size = new System.Drawing.Size(167, 78);
             this.panelTree.TabIndex = 5;
             // 
-            // textBox4
+            // buttonTreeSaveData
             // 
-            this.textBox4.Location = new System.Drawing.Point(3, 54);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(74, 20);
-            this.textBox4.TabIndex = 8;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.buttonTreeSaveData.Location = new System.Drawing.Point(80, 52);
+            this.buttonTreeSaveData.Name = "buttonTreeSaveData";
+            this.buttonTreeSaveData.Size = new System.Drawing.Size(84, 23);
+            this.buttonTreeSaveData.TabIndex = 28;
+            this.buttonTreeSaveData.Text = "Wypis";
+            this.buttonTreeSaveData.UseVisualStyleBackColor = true;
+            this.buttonTreeSaveData.Click += new System.EventHandler(this.buttonTreeSaveData_Click);
+            // 
+            // textBoxTreeFilename
+            // 
+            this.textBoxTreeFilename.Location = new System.Drawing.Point(3, 54);
+            this.textBoxTreeFilename.Name = "textBoxTreeFilename";
+            this.textBoxTreeFilename.ReadOnly = true;
+            this.textBoxTreeFilename.Size = new System.Drawing.Size(74, 20);
+            this.textBoxTreeFilename.TabIndex = 8;
+            this.textBoxTreeFilename.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelTree
             // 
@@ -715,46 +755,6 @@
             this.textBoxTimeTree.Size = new System.Drawing.Size(122, 20);
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // buttonArraySaveData
-            // 
-            this.buttonArraySaveData.Location = new System.Drawing.Point(80, 52);
-            this.buttonArraySaveData.Name = "buttonArraySaveData";
-            this.buttonArraySaveData.Size = new System.Drawing.Size(84, 23);
-            this.buttonArraySaveData.TabIndex = 25;
-            this.buttonArraySaveData.Text = "Wypis";
-            this.buttonArraySaveData.UseVisualStyleBackColor = true;
-            this.buttonArraySaveData.Click += new System.EventHandler(this.buttonArraySaveData_Click);
-            // 
-            // buttonListSaveData
-            // 
-            this.buttonListSaveData.Location = new System.Drawing.Point(80, 51);
-            this.buttonListSaveData.Name = "buttonListSaveData";
-            this.buttonListSaveData.Size = new System.Drawing.Size(84, 23);
-            this.buttonListSaveData.TabIndex = 26;
-            this.buttonListSaveData.Text = "Wypis";
-            this.buttonListSaveData.UseVisualStyleBackColor = true;
-            this.buttonListSaveData.Click += new System.EventHandler(this.buttonListSaveData_Click);
-            // 
-            // buttonHeapSaveData
-            // 
-            this.buttonHeapSaveData.Location = new System.Drawing.Point(80, 51);
-            this.buttonHeapSaveData.Name = "buttonHeapSaveData";
-            this.buttonHeapSaveData.Size = new System.Drawing.Size(84, 23);
-            this.buttonHeapSaveData.TabIndex = 27;
-            this.buttonHeapSaveData.Text = "Wypis";
-            this.buttonHeapSaveData.UseVisualStyleBackColor = true;
-            this.buttonHeapSaveData.Click += new System.EventHandler(this.buttonHeapSaveData_Click);
-            // 
-            // buttonTreeSaveData
-            // 
-            this.buttonTreeSaveData.Location = new System.Drawing.Point(80, 52);
-            this.buttonTreeSaveData.Name = "buttonTreeSaveData";
-            this.buttonTreeSaveData.Size = new System.Drawing.Size(84, 23);
-            this.buttonTreeSaveData.TabIndex = 28;
-            this.buttonTreeSaveData.Text = "Wypis";
-            this.buttonTreeSaveData.UseVisualStyleBackColor = true;
-            this.buttonTreeSaveData.Click += new System.EventHandler(this.buttonTreeSaveData_Click);
             // 
             // FormMain
             // 
@@ -843,7 +843,7 @@
         private System.Windows.Forms.TextBox textBoxArrayFilename;
         private System.Windows.Forms.TextBox textBoxListFilename;
         private System.Windows.Forms.TextBox textBoxHeapFilename;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxTreeFilename;
         private System.Windows.Forms.GroupBox groupBoxSearch;
         private System.Windows.Forms.GroupBox groupBoxIO;
         private System.Windows.Forms.Button button2;

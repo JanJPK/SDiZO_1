@@ -150,6 +150,7 @@ namespace SDiZO_1.Structures
                     sw.Write("]\n");
 
                     sw.WriteLine("Zawartość w formie drzewa:");
+                    sw.WriteLine("Górna gałąź - lewa strona; Dolna - prawa strona");
                     HeapForm(0, " ", sw);
                 }
                 else

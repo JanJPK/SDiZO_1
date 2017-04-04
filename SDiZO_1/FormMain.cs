@@ -209,7 +209,7 @@ namespace SDiZO_1
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             int value;
-            if (!int.TryParse(textBoxDelAmount.Text, out value))
+            if (!int.TryParse(textBoxSearchValue.Text, out value))
             {
                 MessageBox.Show("Nieprawidłowa liczba", "Błąd",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -646,17 +646,20 @@ namespace SDiZO_1
             // TODO
         }
 
-        // TODO
         // Wyszukiwanie.
         private void SearchSdArray(int value)
         {
             SdArrayClock = new Clock(textBoxArrayFilename.Text, "FNDA X " + textBoxSearchValue.Text);
             textBoxStatusArray.Text = "WRK";
 
-            int resultIndex;
-            SdArrayClock.Start();
-            resultIndex = SdArray.FindByValue(value);
-            SdArrayClock.Finish();
+            int resultIndex = -1;
+
+            for (int j = 0; j < cycles; j++)
+            {
+                SdArrayClock.Start();
+                resultIndex = SdArray.FindByValue(value);
+                SdArrayClock.Finish();
+            }
 
             if (resultIndex == -1)
             {
@@ -676,18 +679,22 @@ namespace SDiZO_1
             SdListClock = new Clock(textBoxListFilename.Text, "FNDL X " + textBoxSearchValue.Text);
             textBoxStatusList.Text = "WRK";
 
-            SdListNode resultNode;
-            SdListClock.Start();
-            resultNode = SdList.FindByValue(value);
-            SdListClock.Finish();
+            SdListNode resultNode = null;
 
-            if (resultNode.Data == value)
+            for (int j = 0; j < cycles; j++)
             {
-                textBoxSearchResultList.Text = "Y";
+                SdListClock.Start();
+                resultNode = SdList.FindByValue(value);
+                SdListClock.Finish();
+            }
+
+            if (resultNode == null)
+            {
+                textBoxSearchResultList.Text = "N";
             }
             else
             {
-                textBoxSearchResultList.Text = "N";
+                textBoxSearchResultList.Text = "T";
             }
 
             textBoxTimeList.Text = SdListClock.AverageTime();
@@ -699,10 +706,14 @@ namespace SDiZO_1
             SdHeapClock = new Clock(textBoxHeapFilename.Text, "FNDH X " + textBoxSearchValue.Text);
             textBoxStatusHeap.Text = "WRK";
 
-            int resultIndex;
-            SdHeapClock.Start();
-            resultIndex = SdHeap.FindByValue(value);
-            SdHeapClock.Finish();
+            int resultIndex = -1;
+
+            for (int j = 0; j < cycles; j++)
+            {
+                SdHeapClock.Start();
+                resultIndex = SdHeap.FindByValue(value);
+                SdHeapClock.Finish();
+            }
 
             if (resultIndex == -1)
             {
@@ -721,9 +732,29 @@ namespace SDiZO_1
         {
             SdTreeClock = new Clock(textBoxTreeFilename.Text, "FNDT X " + textBoxSearchValue.Text);
             textBoxStatusArray.Text = "WRK";
-        }
 
-        
+            SdTreeNode resultNode = null;
+
+            for (int j = 0; j < cycles; j++)
+            {
+                SdTreeClock.Start();
+                resultNode = SdTree.FindByValue(value);
+                SdTreeClock.Finish();
+            }
+
+            if (resultNode == null)
+            {
+                textBoxSearchResultTree.Text = "N";
+            }
+            else
+            {
+                textBoxSearchResultTree.Text = "T";
+            }
+
+            textBoxTimeTree.Text = SdTreeClock.AverageTime();
+            SdTreeClock.SaveLog(SdTreeClock.AverageTime());
+            textBoxStatusTree.Text = "RDY";
+        }
 
         // Wczytywanie pliku.
         private void ReadFile(string filename)

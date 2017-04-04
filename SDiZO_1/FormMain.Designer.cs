@@ -62,6 +62,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.buttonCreateFile = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
+            this.textBoxSearchResultTree = new System.Windows.Forms.TextBox();
+            this.textBoxSearchResultHeap = new System.Windows.Forms.TextBox();
+            this.textBoxSearchResultList = new System.Windows.Forms.TextBox();
+            this.textBoxSearchResultArray = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBoxSearchValue = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
@@ -105,10 +109,7 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.textBoxSearchResultArray = new System.Windows.Forms.TextBox();
-            this.textBoxSearchResultList = new System.Windows.Forms.TextBox();
-            this.textBoxSearchResultHeap = new System.Windows.Forms.TextBox();
-            this.textBoxSearchResultTree = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
@@ -452,6 +453,7 @@
             // groupBoxSearch
             // 
             this.groupBoxSearch.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.groupBoxSearch.Controls.Add(this.textBox1);
             this.groupBoxSearch.Controls.Add(this.textBoxSearchResultTree);
             this.groupBoxSearch.Controls.Add(this.textBoxSearchResultHeap);
             this.groupBoxSearch.Controls.Add(this.textBoxSearchResultList);
@@ -461,10 +463,46 @@
             this.groupBoxSearch.Controls.Add(this.buttonSearch);
             this.groupBoxSearch.Location = new System.Drawing.Point(311, 3);
             this.groupBoxSearch.Name = "groupBoxSearch";
-            this.groupBoxSearch.Size = new System.Drawing.Size(148, 151);
+            this.groupBoxSearch.Size = new System.Drawing.Size(148, 186);
             this.groupBoxSearch.TabIndex = 36;
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Wyszukiwanie";
+            // 
+            // textBoxSearchResultTree
+            // 
+            this.textBoxSearchResultTree.BackColor = System.Drawing.Color.ForestGreen;
+            this.textBoxSearchResultTree.Location = new System.Drawing.Point(120, 120);
+            this.textBoxSearchResultTree.Name = "textBoxSearchResultTree";
+            this.textBoxSearchResultTree.ReadOnly = true;
+            this.textBoxSearchResultTree.Size = new System.Drawing.Size(22, 20);
+            this.textBoxSearchResultTree.TabIndex = 37;
+            // 
+            // textBoxSearchResultHeap
+            // 
+            this.textBoxSearchResultHeap.BackColor = System.Drawing.Color.YellowGreen;
+            this.textBoxSearchResultHeap.Location = new System.Drawing.Point(85, 120);
+            this.textBoxSearchResultHeap.Name = "textBoxSearchResultHeap";
+            this.textBoxSearchResultHeap.ReadOnly = true;
+            this.textBoxSearchResultHeap.Size = new System.Drawing.Size(22, 20);
+            this.textBoxSearchResultHeap.TabIndex = 36;
+            // 
+            // textBoxSearchResultList
+            // 
+            this.textBoxSearchResultList.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.textBoxSearchResultList.Location = new System.Drawing.Point(42, 120);
+            this.textBoxSearchResultList.Name = "textBoxSearchResultList";
+            this.textBoxSearchResultList.ReadOnly = true;
+            this.textBoxSearchResultList.Size = new System.Drawing.Size(22, 20);
+            this.textBoxSearchResultList.TabIndex = 35;
+            // 
+            // textBoxSearchResultArray
+            // 
+            this.textBoxSearchResultArray.BackColor = System.Drawing.Color.SteelBlue;
+            this.textBoxSearchResultArray.Location = new System.Drawing.Point(7, 120);
+            this.textBoxSearchResultArray.Name = "textBoxSearchResultArray";
+            this.textBoxSearchResultArray.ReadOnly = true;
+            this.textBoxSearchResultArray.Size = new System.Drawing.Size(22, 20);
+            this.textBoxSearchResultArray.TabIndex = 30;
             // 
             // textBox2
             // 
@@ -900,37 +938,16 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBoxSearchResultArray
+            // textBox1
             // 
-            this.textBoxSearchResultArray.Location = new System.Drawing.Point(7, 120);
-            this.textBoxSearchResultArray.Name = "textBoxSearchResultArray";
-            this.textBoxSearchResultArray.ReadOnly = true;
-            this.textBoxSearchResultArray.Size = new System.Drawing.Size(22, 20);
-            this.textBoxSearchResultArray.TabIndex = 30;
-            // 
-            // textBoxSearchResultList
-            // 
-            this.textBoxSearchResultList.Location = new System.Drawing.Point(42, 120);
-            this.textBoxSearchResultList.Name = "textBoxSearchResultList";
-            this.textBoxSearchResultList.ReadOnly = true;
-            this.textBoxSearchResultList.Size = new System.Drawing.Size(22, 20);
-            this.textBoxSearchResultList.TabIndex = 35;
-            // 
-            // textBoxSearchResultHeap
-            // 
-            this.textBoxSearchResultHeap.Location = new System.Drawing.Point(77, 120);
-            this.textBoxSearchResultHeap.Name = "textBoxSearchResultHeap";
-            this.textBoxSearchResultHeap.ReadOnly = true;
-            this.textBoxSearchResultHeap.Size = new System.Drawing.Size(22, 20);
-            this.textBoxSearchResultHeap.TabIndex = 36;
-            // 
-            // textBoxSearchResultTree
-            // 
-            this.textBoxSearchResultTree.Location = new System.Drawing.Point(115, 120);
-            this.textBoxSearchResultTree.Name = "textBoxSearchResultTree";
-            this.textBoxSearchResultTree.ReadOnly = true;
-            this.textBoxSearchResultTree.Size = new System.Drawing.Size(22, 20);
-            this.textBoxSearchResultTree.TabIndex = 37;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox1.Location = new System.Drawing.Point(6, 146);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(136, 34);
+            this.textBox1.TabIndex = 36;
+            this.textBox1.Text = "T - znaleziono                    N - nie znaleziono";
             // 
             // FormMain
             // 
@@ -1052,5 +1069,6 @@
         private System.Windows.Forms.TextBox textBoxSearchResultHeap;
         private System.Windows.Forms.TextBox textBoxSearchResultList;
         private System.Windows.Forms.TextBox textBoxSearchResultArray;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

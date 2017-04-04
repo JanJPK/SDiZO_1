@@ -70,7 +70,7 @@ namespace SDiZO_1.Structures
         }
 
         // Wyszukiwanie elementu o zadanej wartości.
-        // Zwraca indeks elementu lub null jeżeli taki element nie został znaleziony.
+        // Zwraca węzeł lub null jeżeli taki element nie został znaleziony.
         public SdTreeNode FindByValue(int value)
         {
             if (Size > 0)
@@ -107,17 +107,10 @@ namespace SDiZO_1.Structures
         }
 
         // Usuwanie.
+        // TODO
         public void Delete(int value)
         {
-            /*
-            if (Size > 0)
-            {
-                if (index == 0)
-                {
-                    
-                }
-            }
-            */
+            SdTreeNode nodeToDelete = FindByValue(value);
         }
 
         // Wypisywanie zawartości do pliku.

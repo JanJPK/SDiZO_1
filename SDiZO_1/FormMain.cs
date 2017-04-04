@@ -27,6 +27,9 @@ namespace SDiZO_1
         private SdTree SdT;
         private Clock SdTClock;
         private int cycles;
+
+        private int addFrom, addTo, addAmount;
+
         private Random rng = new Random();
         // rng.Next(min,max) zwraca wartości <min, max).
 
@@ -66,7 +69,6 @@ namespace SDiZO_1
         private void buttonAddTarget_Click(object sender, EventArgs e)
         {
             // Sprawdzanie czy wprowadzone liczby są poprawne.
-            int addFrom, addTo, addAmount;
             if (!int.TryParse(textBoxAddFrom.Text, out addFrom))
             {
                 MessageBox.Show("Nieprawidłowa liczba", "Błąd",
@@ -93,10 +95,10 @@ namespace SDiZO_1
             }
 
             // Wywoływanie funkcji każdej struktury.
-            AddSdArray(addFrom, addTo, addAmount);
-            AddSdList(addFrom, addTo, addAmount);
-            AddSdHeap(addFrom, addTo, addAmount);
-            AddSdTree(addFrom, addTo, addAmount);
+            AddSdArray();
+            AddSdList();
+            AddSdHeap();
+            AddSdTree();
 
             // Przywracanie tablicy do null.
             numberArray = null;
@@ -203,7 +205,7 @@ namespace SDiZO_1
 
         // Funkcje:
         // Dodawanie.
-        private void AddSdArray(int addFrom, int addTo, int addAmount)
+        private void AddSdArray()
         {
             // Tworzenie licznika czasu.
             SdAClock = new Clock(textBoxArrayFilename.Text, "ADDA X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text);
@@ -215,8 +217,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                    arraySize = numberArray.Length;
+                    FillNumberArray();
                     // Losowanie pozycji z zakresu [0, (obecny rozmiar tablicy)]
                     int position = rng.Next(0, SdA.Size);
 
@@ -243,8 +244,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                    arraySize = numberArray.Length;
+                    FillNumberArray();
                     // Start pomiaru.
                     SdAClock.Start();
                     for (int i = 0; i < arraySize; i++)
@@ -268,8 +268,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                    arraySize = numberArray.Length;
+                    FillNumberArray();
                     // Start pomiaru.
                     SdAClock.Start();
                     for (int i = 0; i < arraySize; i++)
@@ -287,32 +286,17 @@ namespace SDiZO_1
                 }
             }
 
-            // Dodawanie z pliku.
-            if (radioButtonAddFromFile.Checked)
-            {
-                ReadFile("Input");
-                // Start pomiaru.
-                SdAClock.Start();
-                for (var i = 0; i < arraySize; i++)
-                {
-                    SdA.AddEnd(numberArray[i]);
-                }
-                // Finish pomiaru i zapis.
-                SdAClock.Finish();
-
-            }
-
             // Dodawanie w zadane miejsce.
             if (radioButtonAddTarget.Checked)
             {
-
+                // TODO
             }
 
             SdAClock.SaveLog(SdAClock.AverageTime());
             textBoxTimeArray.Text = SdAClock.AverageTime();
             textBoxStatusArray.Text = "RDY";
         }
-        private void AddSdList(int addFrom, int addTo, int addAmount)
+        private void AddSdList()
         {   
             // Tworzenie licznika czasu.
             SdLClock = new Clock(textBoxListFilename.Text, "ADDL X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text);
@@ -324,8 +308,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                    arraySize = numberArray.Length;
+                    FillNumberArray();
                     // Losowanie pozycji z zakresu [0, (obecny rozmiar listy-1)]
                     int position = rng.Next(0, SdL.Size);
                     
@@ -352,8 +335,7 @@ namespace SDiZO_1
                 for (int j = 0; j < cycles; j++)
                 {
                     // Tworzenie nowej tablicy.
-                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                    arraySize = numberArray.Length;
+                    FillNumberArray();
                     // Start pomiaru.
                     SdLClock.Start();
                     for (int i = 0; i < arraySize; i++)
@@ -376,8 +358,8 @@ namespace SDiZO_1
             {
                 for (int j = 0; j < cycles; j++)
                 {
-                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                    arraySize = numberArray.Length;
+                    // Tworzenie nowej tablicy.
+                    FillNumberArray();
                     // Start pomiaru.
                     SdLClock.Start();
                     for (int i = 0; i < arraySize; i++)
@@ -395,19 +377,6 @@ namespace SDiZO_1
                 }
             }
 
-            // Dodawanie z pliku.
-            if (radioButtonAddFromFile.Checked)
-            {
-                ReadFile("Input");
-                // Start pomiaru.
-                SdLClock.Start();
-                for (var i = 0; i < arraySize; i++)
-                {
-                    SdL.AddEnd(numberArray[i]);
-                }
-                // Finish pomiaru i zapis.
-                SdHClock.Finish();
-            }
 
             // Dodawanie w zadane miejsce.
             if (radioButtonAddTarget.Checked)
@@ -433,93 +402,54 @@ namespace SDiZO_1
             textBoxStatusList.Text = "RDY";
 
         }
-        private void AddSdHeap(int addFrom, int addTo, int addAmount)
+        private void AddSdHeap()
         {
             SdHClock = new Clock(textBoxHeapFilename.Text, ("ADDH X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
             textBoxStatusHeap.Text = "WRK";
 
-            if (radioButtonAddFromFile.Checked)
-            {
-                // Dodawanie z pliku.
-                // Start pomiaru.
-                ReadFile("Input");
-                SdHClock.Start();
-                for (int i = 0; i < arraySize; i++)
-                {
-                    SdH.Add(numberArray[i]);
-                }
-                // Finish pomiaru.
-                SdHClock.Finish();
-            }
-            else
-            {
                 for (int j = 0; j < cycles; j++)
                 {
                     // Standardowe dodawanie.
-                    numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                    arraySize = numberArray.Length;
+                    FillNumberArray();
                     // Start pomiaru.
                     SdHClock.Start();
-                    for (int i = 0; i < arraySize; i++)
-                    {
+                    for (var i = 0; i < arraySize; i++)
                         SdH.Add(numberArray[i]);
-                    }
                     // Finish pomiaru.
                     SdHClock.Finish();
 
                     // Czyszczenie struktury.
                     if (checkBoxReset.Checked)
-                    {
                         SdH = new SdHeap();
-                    }
                 }
-            }
 
             SdHClock.SaveLog(SdHClock.AverageTime());
             textBoxTimeHeap.Text = SdHClock.AverageTime();
             textBoxStatusHeap.Text = "RDY";
 
         }
-        private void AddSdTree(int addFrom, int addTo, int addAmount)
+        private void AddSdTree()
         {
             SdTClock = new Clock(textBoxTreeFilename.Text, ("ADDT X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
             textBoxStatusTree.Text = "WRK";
 
-            if (radioButtonAddFromFile.Checked)
+
+            // Standardowe dodawanie.
+            for (var j = 0; j < cycles; j++)
             {
+                // Tworzenie nowej tablicy.
+                FillNumberArray();
+                // Start pomiaru.
+                SdTClock.Start();
+                for (var i = 0; i < arraySize; i++)
+                    SdT.Add(numberArray[i]);
+                // Finish pomiaru.
+                SdTClock.Finish();
 
+                // Czyszczenie struktury.
+                if (checkBoxReset.Checked)
+                    SdT = new SdTree();
             }
-            else
-            {
-                if (radioButtonAddTarget.Checked)
-                {
-
-                }
-                else
-                {
-                    // Standardowe dodawanie.
-                    for (int j = 0; j < cycles; j++)
-                    {
-                        numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
-                        arraySize = numberArray.Length;
-                        // Start pomiaru.
-                        SdTClock.Start();
-                        for (int i = 0; i < arraySize; i++)
-                        {
-                            SdT.Add(numberArray[i]);
-                        }
-                        // Finish pomiaru.
-                        SdTClock.Finish();
-
-                        // Czyszczenie struktury.
-                        if (checkBoxReset.Checked)
-                        {
-                            SdT = new SdTree();
-                        }
-                    }
-                }
-            }
-            
 
             SdTClock.SaveLog(SdTClock.AverageTime());
             textBoxTimeTree.Text = SdTClock.AverageTime();
@@ -643,9 +573,10 @@ namespace SDiZO_1
         }
         private void DeleteSdTree(int deleteAmount)
         {
-            
+            // TODO
         }
 
+        // TODO
         // Wyszukiwanie.
         private void SearchSdArray()
         {
@@ -746,5 +677,25 @@ namespace SDiZO_1
             }
         }
         
+        // Tworzenie tablicy z liczbami.
+        private void FillNumberArray()
+        {
+            if (checkBoxAddFromFile.Checked)
+            {
+                // Jeżeli zaznaczony jest checkBox "wczytywanie pliku"
+                // Wczytaj dane z pliku do tablicy.
+                ReadFile("Input");
+                // Ustaw cykle na 1, nie ma potrzeby wczytywać kilka razy tego samego.
+                cycles = 1;
+                textBoxActionMultiplier.Text = "1";
+            }
+            else
+            {
+                // Stwórz tablicę losowych liczb.
+                numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
+            }
+            // Dopasuj wielkość.
+            arraySize = numberArray.Length;
+        }
     }
 }

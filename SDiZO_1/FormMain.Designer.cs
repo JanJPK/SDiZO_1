@@ -47,6 +47,11 @@
             this.textBoxStatusHeap = new System.Windows.Forms.TextBox();
             this.textBoxTimeHeap = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBoxIO = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBoxCreateFrom = new System.Windows.Forms.TextBox();
@@ -66,7 +71,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxAddTargetPosition = new System.Windows.Forms.TextBox();
             this.textBoxAddTargetValue = new System.Windows.Forms.TextBox();
-            this.radioButtonAddFromFile = new System.Windows.Forms.RadioButton();
             this.radioButtonAddTarget = new System.Windows.Forms.RadioButton();
             this.buttonAddTarget = new System.Windows.Forms.Button();
             this.textBoxAddFrom = new System.Windows.Forms.TextBox();
@@ -89,6 +93,7 @@
             this.radioButtonDelRng = new System.Windows.Forms.RadioButton();
             this.radioButtonDelEnd = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.checkBoxReset = new System.Windows.Forms.CheckBox();
             this.buttonReset = new System.Windows.Forms.Button();
             this.textBoxActionMultiplier = new System.Windows.Forms.TextBox();
@@ -100,23 +105,18 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBoxAddFromFile = new System.Windows.Forms.CheckBox();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBoxIO.SuspendLayout();
             this.groupBoxSearch.SuspendLayout();
             this.groupBoxAdd.SuspendLayout();
             this.groupBoxDel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelTree.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelArray
@@ -310,6 +310,58 @@
             this.panel2.Size = new System.Drawing.Size(686, 285);
             this.panel2.TabIndex = 7;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Tomato;
+            this.panel1.Controls.Add(this.checkBox4);
+            this.panel1.Controls.Add(this.checkBox3);
+            this.panel1.Controls.Add(this.checkBox2);
+            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Location = new System.Drawing.Point(465, 232);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(218, 50);
+            this.panel1.TabIndex = 36;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(112, 3);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(80, 17);
+            this.checkBox4.TabIndex = 3;
+            this.checkBox4.Text = "checkBox4";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(112, 25);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(80, 17);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "checkBox3";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 26);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(80, 17);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "checkBox2";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // groupBoxIO
             // 
             this.groupBoxIO.BackColor = System.Drawing.SystemColors.InactiveBorder;
@@ -446,11 +498,11 @@
             // groupBoxAdd
             // 
             this.groupBoxAdd.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.groupBoxAdd.Controls.Add(this.checkBoxAddFromFile);
             this.groupBoxAdd.Controls.Add(this.label2);
             this.groupBoxAdd.Controls.Add(this.label1);
             this.groupBoxAdd.Controls.Add(this.textBoxAddTargetPosition);
             this.groupBoxAdd.Controls.Add(this.textBoxAddTargetValue);
-            this.groupBoxAdd.Controls.Add(this.radioButtonAddFromFile);
             this.groupBoxAdd.Controls.Add(this.radioButtonAddTarget);
             this.groupBoxAdd.Controls.Add(this.buttonAddTarget);
             this.groupBoxAdd.Controls.Add(this.textBoxAddFrom);
@@ -500,17 +552,6 @@
             this.textBoxAddTargetValue.Name = "textBoxAddTargetValue";
             this.textBoxAddTargetValue.Size = new System.Drawing.Size(79, 20);
             this.textBoxAddTargetValue.TabIndex = 29;
-            // 
-            // radioButtonAddFromFile
-            // 
-            this.radioButtonAddFromFile.AutoSize = true;
-            this.radioButtonAddFromFile.Location = new System.Drawing.Point(10, 154);
-            this.radioButtonAddFromFile.Name = "radioButtonAddFromFile";
-            this.radioButtonAddFromFile.Size = new System.Drawing.Size(57, 17);
-            this.radioButtonAddFromFile.TabIndex = 26;
-            this.radioButtonAddFromFile.TabStop = true;
-            this.radioButtonAddFromFile.Text = "Z pliku";
-            this.radioButtonAddFromFile.UseVisualStyleBackColor = true;
             // 
             // radioButtonAddTarget
             // 
@@ -733,6 +774,18 @@
             this.panel3.Size = new System.Drawing.Size(218, 118);
             this.panel3.TabIndex = 25;
             // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox3.Location = new System.Drawing.Point(6, 56);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(206, 59);
+            this.textBox3.TabIndex = 35;
+            this.textBox3.Text = "Reset czyści struktury jeden raz lub po każdym cyklu. Ilość cykli określa powtórz" +
+    "enia danych operacji np. dodawania.";
+            // 
             // checkBoxReset
             // 
             this.checkBoxReset.AutoSize = true;
@@ -839,69 +892,15 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox3
+            // checkBoxAddFromFile
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox3.Location = new System.Drawing.Point(6, 56);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(206, 59);
-            this.textBox3.TabIndex = 35;
-            this.textBox3.Text = "Reset czyści struktury jeden raz lub po każdym cyklu. Ilość cykli określa powtórz" +
-    "enia danych operacji np. dodawania.";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Tomato;
-            this.panel1.Controls.Add(this.checkBox4);
-            this.panel1.Controls.Add(this.checkBox3);
-            this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Location = new System.Drawing.Point(465, 232);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(218, 50);
-            this.panel1.TabIndex = 36;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 26);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(112, 25);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(80, 17);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(112, 3);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(80, 17);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBoxAddFromFile.AutoSize = true;
+            this.checkBoxAddFromFile.Location = new System.Drawing.Point(10, 154);
+            this.checkBoxAddFromFile.Name = "checkBoxAddFromFile";
+            this.checkBoxAddFromFile.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxAddFromFile.TabIndex = 33;
+            this.checkBoxAddFromFile.Text = "checkBox5";
+            this.checkBoxAddFromFile.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -922,6 +921,8 @@
             this.panelHeap.ResumeLayout(false);
             this.panelHeap.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBoxIO.ResumeLayout(false);
             this.groupBoxIO.PerformLayout();
             this.groupBoxSearch.ResumeLayout(false);
@@ -934,8 +935,6 @@
             this.panel3.PerformLayout();
             this.panelTree.ResumeLayout(false);
             this.panelTree.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1006,7 +1005,6 @@
         private System.Windows.Forms.Button buttonTreeSaveData;
         private System.Windows.Forms.RadioButton radioButtonAddTarget;
         private System.Windows.Forms.RadioButton radioButtonDelTarget;
-        private System.Windows.Forms.RadioButton radioButtonAddFromFile;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -1020,5 +1018,6 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxAddFromFile;
     }
 }

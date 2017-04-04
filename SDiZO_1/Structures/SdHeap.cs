@@ -22,7 +22,7 @@ namespace SDiZO_1.Structures
 
         // Property i zmienne.
         public int Size { get; set; }
-        private int[] array;
+        public int[] Array { get; set; }
         
         // Konstruktor.
         public SdHeap()
@@ -38,18 +38,18 @@ namespace SDiZO_1.Structures
             int[] newArray = new int[Size];
             for (int i = 0; i < (Size - 1); i++)
             {
-                newArray[i] = array[i];
+                newArray[i] = Array[i];
             }
             newArray[Size - 1] = number;
-            array = newArray;
+            Array = newArray;
 
             // Zamienianie miejsc gdy jest to potrzebne.
             int index = (Size - 1);
-            while (index > 0 && array[((index - 1) / 2)] < number)
+            while (index > 0 && Array[((index - 1) / 2)] < number)
             {
-                int swap = array[((index - 1) / 2)];
-                array[((index - 1) / 2)] = number;
-                array[index] = swap;
+                int swap = Array[((index - 1) / 2)];
+                Array[((index - 1) / 2)] = number;
+                Array[index] = swap;
                 index = ((index - 1) / 2);
             }
         }
@@ -63,15 +63,15 @@ namespace SDiZO_1.Structures
             */
 
             // Zamiana miejscami ostatniego elementu z pierwszym.
-            array[0] = array[Size - 1];
+            Array[0] = Array[Size - 1];
             Size--;
             // Przeniesienie zawartości tablicy.
             int [] newArray = new int[Size];
             for (int i = 0; i < (Size); i++)
             {
-                newArray[i] = array[i];
+                newArray[i] = Array[i];
             }
-            array = newArray;
+            Array = newArray;
             // Sortowanie w celu zachowania warunku kopca.
             int index = 0;
             int lChildIndex = 2 * index + 1;
@@ -82,20 +82,20 @@ namespace SDiZO_1.Structures
             {
                 if (rChildIndex < Size && lChildIndex < Size)
                 {
-                    if (array[rChildIndex] > array[index] || array[lChildIndex] > array[index])
+                    if (Array[rChildIndex] > Array[index] || Array[lChildIndex] > Array[index])
                     {
-                        if (array[rChildIndex] > array[lChildIndex])
+                        if (Array[rChildIndex] > Array[lChildIndex])
                         {
-                            swap = array[index];
-                            array[index] = array[rChildIndex];
-                            array[rChildIndex] = swap;
+                            swap = Array[index];
+                            Array[index] = Array[rChildIndex];
+                            Array[rChildIndex] = swap;
                             index = rChildIndex;
                         }
                         else
                         {
-                            swap = array[index];
-                            array[index] = array[lChildIndex];
-                            array[lChildIndex] = swap;
+                            swap = Array[index];
+                            Array[index] = Array[lChildIndex];
+                            Array[lChildIndex] = swap;
                             index = lChildIndex;
                         }
                         
@@ -110,11 +110,11 @@ namespace SDiZO_1.Structures
                 {
                     if (lChildIndex < Size)
                     {
-                        if (array[lChildIndex] > array[index])
+                        if (Array[lChildIndex] > Array[index])
                         {
-                            swap = array[index];
-                            array[index] = array[lChildIndex];
-                            array[lChildIndex] = swap;
+                            swap = Array[index];
+                            Array[index] = Array[lChildIndex];
+                            Array[lChildIndex] = swap;
                             index = lChildIndex;
                         }
                         else
@@ -141,7 +141,7 @@ namespace SDiZO_1.Structures
             int index = 0;
             while (index < Size)
             {
-                if (array[index] == value)
+                if (Array[index] == value)
                 {
                     return index;
                 }
@@ -162,9 +162,9 @@ namespace SDiZO_1.Structures
                 {
                     sw.WriteLine("Zawartość w formie tablicy:");
                     sw.Write("[");
-                    for (int i = 0; i < array.Length; i++)
+                    for (int i = 0; i < Array.Length; i++)
                     {
-                        sw.Write(array[i] + " ");
+                        sw.Write(Array[i] + " ");
                     }
                     sw.Write("]\n");
 
@@ -184,19 +184,19 @@ namespace SDiZO_1.Structures
 
         private void HeapForm(int index, String prefix, StreamWriter sw)
         {
-            if (index > array.Length)
+            if (index > Array.Length)
             {
                 sw.WriteLine(prefix + "-- [brak]");
             }
             else
             {
-                sw.WriteLine(prefix + "-- [" + array[index]+"]");
-                if ((index * 2 + 1) < array.Length)
+                sw.WriteLine(prefix + "-- [" + Array[index]+"]");
+                if ((index * 2 + 1) < Array.Length)
                 {
                     HeapForm((index * 2 + 1), prefix + "|  ", sw);
                 }
 
-                if ((index * 2 + 2) < array.Length)
+                if ((index * 2 + 2) < Array.Length)
                 {
                     HeapForm((index * 2 + 2), prefix + "|  ", sw);
                 }

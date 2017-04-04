@@ -106,6 +106,20 @@ namespace SDiZO_1.Structures
             }
         }
 
+        // Usuwanie.
+        public void Delete(int value)
+        {
+            /*
+            if (Size > 0)
+            {
+                if (index == 0)
+                {
+                    
+                }
+            }
+            */
+        }
+
         // Wypisywanie zawartości do pliku.
         public void SaveData()
         {

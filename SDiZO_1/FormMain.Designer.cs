@@ -48,10 +48,10 @@
             this.textBoxTimeHeap = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableHeap = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableTree = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableList = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnableArray = new System.Windows.Forms.CheckBox();
             this.groupBoxIO = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.textBoxCreateFrom = new System.Windows.Forms.TextBox();
@@ -59,14 +59,14 @@
             this.textBoxCreateAmount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.buttonReadFile = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonCreateFile = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxSearchValue = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBoxAdd = new System.Windows.Forms.GroupBox();
+            this.checkBoxAddFromFile = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxAddTargetPosition = new System.Windows.Forms.TextBox();
@@ -105,7 +105,10 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.checkBoxAddFromFile = new System.Windows.Forms.CheckBox();
+            this.textBoxSearchResultArray = new System.Windows.Forms.TextBox();
+            this.textBoxSearchResultList = new System.Windows.Forms.TextBox();
+            this.textBoxSearchResultHeap = new System.Windows.Forms.TextBox();
+            this.textBoxSearchResultTree = new System.Windows.Forms.TextBox();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
@@ -312,55 +315,55 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Tomato;
-            this.panel1.Controls.Add(this.checkBox4);
-            this.panel1.Controls.Add(this.checkBox3);
-            this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.BackColor = System.Drawing.Color.RosyBrown;
+            this.panel1.Controls.Add(this.checkBoxEnableHeap);
+            this.panel1.Controls.Add(this.checkBoxEnableTree);
+            this.panel1.Controls.Add(this.checkBoxEnableList);
+            this.panel1.Controls.Add(this.checkBoxEnableArray);
             this.panel1.Location = new System.Drawing.Point(465, 232);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(218, 50);
             this.panel1.TabIndex = 36;
             // 
-            // checkBox4
+            // checkBoxEnableHeap
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(112, 3);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(80, 17);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBoxEnableHeap.AutoSize = true;
+            this.checkBoxEnableHeap.Location = new System.Drawing.Point(112, 3);
+            this.checkBoxEnableHeap.Name = "checkBoxEnableHeap";
+            this.checkBoxEnableHeap.Size = new System.Drawing.Size(59, 17);
+            this.checkBoxEnableHeap.TabIndex = 3;
+            this.checkBoxEnableHeap.Text = "Kopiec";
+            this.checkBoxEnableHeap.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // checkBoxEnableTree
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(112, 25);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(80, 17);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBoxEnableTree.AutoSize = true;
+            this.checkBoxEnableTree.Location = new System.Drawing.Point(112, 25);
+            this.checkBoxEnableTree.Name = "checkBoxEnableTree";
+            this.checkBoxEnableTree.Size = new System.Drawing.Size(62, 17);
+            this.checkBoxEnableTree.TabIndex = 2;
+            this.checkBoxEnableTree.Text = "Drzewo";
+            this.checkBoxEnableTree.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkBoxEnableList
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 26);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxEnableList.AutoSize = true;
+            this.checkBoxEnableList.Location = new System.Drawing.Point(6, 26);
+            this.checkBoxEnableList.Name = "checkBoxEnableList";
+            this.checkBoxEnableList.Size = new System.Drawing.Size(48, 17);
+            this.checkBoxEnableList.TabIndex = 1;
+            this.checkBoxEnableList.Text = "Lista";
+            this.checkBoxEnableList.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkBoxEnableArray
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxEnableArray.AutoSize = true;
+            this.checkBoxEnableArray.Location = new System.Drawing.Point(6, 3);
+            this.checkBoxEnableArray.Name = "checkBoxEnableArray";
+            this.checkBoxEnableArray.Size = new System.Drawing.Size(61, 17);
+            this.checkBoxEnableArray.TabIndex = 0;
+            this.checkBoxEnableArray.Text = "Tablica";
+            this.checkBoxEnableArray.UseVisualStyleBackColor = true;
             // 
             // groupBoxIO
             // 
@@ -371,7 +374,6 @@
             this.groupBoxIO.Controls.Add(this.textBoxCreateAmount);
             this.groupBoxIO.Controls.Add(this.label6);
             this.groupBoxIO.Controls.Add(this.label5);
-            this.groupBoxIO.Controls.Add(this.buttonReadFile);
             this.groupBoxIO.Controls.Add(this.label4);
             this.groupBoxIO.Controls.Add(this.buttonCreateFile);
             this.groupBoxIO.Location = new System.Drawing.Point(465, 3);
@@ -429,15 +431,6 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Do";
             // 
-            // buttonReadFile
-            // 
-            this.buttonReadFile.Location = new System.Drawing.Point(112, 74);
-            this.buttonReadFile.Name = "buttonReadFile";
-            this.buttonReadFile.Size = new System.Drawing.Size(100, 23);
-            this.buttonReadFile.TabIndex = 8;
-            this.buttonReadFile.Text = "Wczytaj plik";
-            this.buttonReadFile.UseVisualStyleBackColor = true;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -459,12 +452,16 @@
             // groupBoxSearch
             // 
             this.groupBoxSearch.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.groupBoxSearch.Controls.Add(this.textBoxSearchResultTree);
+            this.groupBoxSearch.Controls.Add(this.textBoxSearchResultHeap);
+            this.groupBoxSearch.Controls.Add(this.textBoxSearchResultList);
+            this.groupBoxSearch.Controls.Add(this.textBoxSearchResultArray);
             this.groupBoxSearch.Controls.Add(this.textBox2);
-            this.groupBoxSearch.Controls.Add(this.textBox1);
+            this.groupBoxSearch.Controls.Add(this.textBoxSearchValue);
             this.groupBoxSearch.Controls.Add(this.buttonSearch);
             this.groupBoxSearch.Location = new System.Drawing.Point(311, 3);
             this.groupBoxSearch.Name = "groupBoxSearch";
-            this.groupBoxSearch.Size = new System.Drawing.Size(148, 123);
+            this.groupBoxSearch.Size = new System.Drawing.Size(148, 151);
             this.groupBoxSearch.TabIndex = 36;
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Wyszukiwanie";
@@ -479,12 +476,12 @@
             this.textBox2.TabIndex = 34;
             this.textBox2.Text = "Wyszukuje pierwsze wystąpienie zadanej wartości.";
             // 
-            // textBox1
+            // textBoxSearchValue
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 65);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(136, 20);
-            this.textBox1.TabIndex = 33;
+            this.textBoxSearchValue.Location = new System.Drawing.Point(6, 65);
+            this.textBoxSearchValue.Name = "textBoxSearchValue";
+            this.textBoxSearchValue.Size = new System.Drawing.Size(136, 20);
+            this.textBoxSearchValue.TabIndex = 33;
             // 
             // buttonSearch
             // 
@@ -494,6 +491,7 @@
             this.buttonSearch.TabIndex = 29;
             this.buttonSearch.Text = "Wyszukaj";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // groupBoxAdd
             // 
@@ -520,6 +518,16 @@
             this.groupBoxAdd.TabIndex = 36;
             this.groupBoxAdd.TabStop = false;
             this.groupBoxAdd.Text = "Dodawanie";
+            // 
+            // checkBoxAddFromFile
+            // 
+            this.checkBoxAddFromFile.AutoSize = true;
+            this.checkBoxAddFromFile.Location = new System.Drawing.Point(10, 154);
+            this.checkBoxAddFromFile.Name = "checkBoxAddFromFile";
+            this.checkBoxAddFromFile.Size = new System.Drawing.Size(85, 17);
+            this.checkBoxAddFromFile.TabIndex = 33;
+            this.checkBoxAddFromFile.Text = "Dane z pliku";
+            this.checkBoxAddFromFile.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -892,15 +900,37 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // checkBoxAddFromFile
+            // textBoxSearchResultArray
             // 
-            this.checkBoxAddFromFile.AutoSize = true;
-            this.checkBoxAddFromFile.Location = new System.Drawing.Point(10, 154);
-            this.checkBoxAddFromFile.Name = "checkBoxAddFromFile";
-            this.checkBoxAddFromFile.Size = new System.Drawing.Size(80, 17);
-            this.checkBoxAddFromFile.TabIndex = 33;
-            this.checkBoxAddFromFile.Text = "checkBox5";
-            this.checkBoxAddFromFile.UseVisualStyleBackColor = true;
+            this.textBoxSearchResultArray.Location = new System.Drawing.Point(7, 120);
+            this.textBoxSearchResultArray.Name = "textBoxSearchResultArray";
+            this.textBoxSearchResultArray.ReadOnly = true;
+            this.textBoxSearchResultArray.Size = new System.Drawing.Size(22, 20);
+            this.textBoxSearchResultArray.TabIndex = 30;
+            // 
+            // textBoxSearchResultList
+            // 
+            this.textBoxSearchResultList.Location = new System.Drawing.Point(42, 120);
+            this.textBoxSearchResultList.Name = "textBoxSearchResultList";
+            this.textBoxSearchResultList.ReadOnly = true;
+            this.textBoxSearchResultList.Size = new System.Drawing.Size(22, 20);
+            this.textBoxSearchResultList.TabIndex = 35;
+            // 
+            // textBoxSearchResultHeap
+            // 
+            this.textBoxSearchResultHeap.Location = new System.Drawing.Point(77, 120);
+            this.textBoxSearchResultHeap.Name = "textBoxSearchResultHeap";
+            this.textBoxSearchResultHeap.ReadOnly = true;
+            this.textBoxSearchResultHeap.Size = new System.Drawing.Size(22, 20);
+            this.textBoxSearchResultHeap.TabIndex = 36;
+            // 
+            // textBoxSearchResultTree
+            // 
+            this.textBoxSearchResultTree.Location = new System.Drawing.Point(115, 120);
+            this.textBoxSearchResultTree.Name = "textBoxSearchResultTree";
+            this.textBoxSearchResultTree.ReadOnly = true;
+            this.textBoxSearchResultTree.Size = new System.Drawing.Size(22, 20);
+            this.textBoxSearchResultTree.TabIndex = 37;
             // 
             // FormMain
             // 
@@ -975,7 +1005,6 @@
         private System.Windows.Forms.Button buttonAddTarget;
         private System.Windows.Forms.TextBox textBoxAddTo;
         private System.Windows.Forms.TextBox textBoxAddFrom;
-        private System.Windows.Forms.Button buttonReadFile;
         private System.Windows.Forms.Button buttonCreateFile;
         private System.Windows.Forms.TextBox textBoxCreateAmount;
         private System.Windows.Forms.TextBox textBoxCreateTo;
@@ -997,7 +1026,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonReset;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxSearchValue;
         private System.Windows.Forms.CheckBox checkBoxReset;
         private System.Windows.Forms.Button buttonArraySaveData;
         private System.Windows.Forms.Button buttonListSaveData;
@@ -1014,10 +1043,14 @@
         private System.Windows.Forms.TextBox textBoxDelTargetPosition;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxEnableHeap;
+        private System.Windows.Forms.CheckBox checkBoxEnableTree;
+        private System.Windows.Forms.CheckBox checkBoxEnableList;
+        private System.Windows.Forms.CheckBox checkBoxEnableArray;
         private System.Windows.Forms.CheckBox checkBoxAddFromFile;
+        private System.Windows.Forms.TextBox textBoxSearchResultTree;
+        private System.Windows.Forms.TextBox textBoxSearchResultHeap;
+        private System.Windows.Forms.TextBox textBoxSearchResultList;
+        private System.Windows.Forms.TextBox textBoxSearchResultArray;
     }
 }

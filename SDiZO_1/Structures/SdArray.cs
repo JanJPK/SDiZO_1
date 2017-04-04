@@ -7,7 +7,7 @@ namespace SDiZO_1.Structures
     {
         // Property i zmienne.
         public int Size { get; set; }
-        private int[] array;
+        public int[] Array { get; set; }
         
         // Konstruktor.
         public SdArray()
@@ -23,12 +23,12 @@ namespace SDiZO_1.Structures
             int[] newArray = new int[Size];
             for (int i = 0; i < (Size - 1); i++)
             {
-                newArray[i] = array[i];
+                newArray[i] = Array[i];
             }
             // Dodawanie nowej liczby na sam koniec.
             newArray[Size - 1] = number;
             // Przypisanie zmiennym nowej tablicy i jej wielkości.
-            array = newArray;
+            Array = newArray;
             Size = newArray.Length;
         }
 
@@ -40,12 +40,12 @@ namespace SDiZO_1.Structures
             int[] newArray = new int[Size];
             for (int i = 0; i < (Size - 1); i++)
             {
-                newArray[i+1] = array[i];
+                newArray[i+1] = Array[i];
             }
             // Dodawanie nowej liczby na sam koniec.
             newArray[0] = number;
             // Przypisanie zmiennym nowej tablicy i jej wielkości.
-            array = newArray;
+            Array = newArray;
             Size = newArray.Length;
         }
 
@@ -62,7 +62,7 @@ namespace SDiZO_1.Structures
                 // [0 -> (index-1)] = stare elementy
                 for (int i = 0; i < index; i++)
                 {
-                    newArray[i] = array[i];
+                    newArray[i] = Array[i];
                 }
 
                 // [index] = nowy element
@@ -71,12 +71,12 @@ namespace SDiZO_1.Structures
                 // [(index+1) -> max] = stare elementy
                 for (int i = index + 1; i < newArray.Length; i++)
                 {
-                    newArray[i] = array[i - 1];
+                    newArray[i] = Array[i - 1];
                 }
 
                 // Przypisanie zmiennym nowej tablicy i jej wielkości.
-                array = newArray;
-                Size = array.Length;
+                Array = newArray;
+                Size = Array.Length;
             }
             else
             {
@@ -94,15 +94,15 @@ namespace SDiZO_1.Structures
                 int[] newArray = new int[Size - 1];
                 for (int i = 0; i < index; i++)
                 {
-                    newArray[i] = array[i];
+                    newArray[i] = Array[i];
                 }
                 for (int i = index; i < newArray.Length; i++)
                 {
-                    newArray[i] = array[i + 1];
+                    newArray[i] = Array[i + 1];
                 }
                 // Przypisanie zmiennym nowej tablicy i jej wielkości.
-                array = newArray;
-                Size = array.Length;
+                Array = newArray;
+                Size = Array.Length;
 
             }
             else
@@ -119,7 +119,7 @@ namespace SDiZO_1.Structures
             int index = 0;
             while (index < Size)
             {
-                if (array[index] == value)
+                if (Array[index] == value)
                 {
                     return index;
                 }
@@ -140,7 +140,7 @@ namespace SDiZO_1.Structures
                 {
                     for (int i = 0; i < Size; i++)
                     {
-                        sw.WriteLine("[" + i + "] = " + array[i]);
+                        sw.WriteLine("[" + i + "] = " + Array[i]);
                     }
                 }
                 else

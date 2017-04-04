@@ -16,20 +16,28 @@ namespace SDiZO_1
     public partial class FormMain : Form
     {
         public string SavePath = @".\";
+
+        // Tablica z której dodawane będą liczby do struktur.
         public int[] numberArray;
         public int arraySize;
-        private SdArray SdA;
-        private Clock SdAClock;
-        private SdList SdL;
-        private Clock SdLClock;
-        private SdHeap SdH;
-        private Clock SdHClock;
-        private SdTree SdT;
-        private Clock SdTClock;
+
+        // Zmienne struktur i ich zegarów.
+        private SdArray SdArray;
+        private Clock SdArrayClock;
+        private SdList SdList;
+        private Clock SdListClock;
+        private SdHeap SdHeap;
+        private Clock SdHeapClock;
+        private SdTree SdTree;
+        private Clock SdTreeClock;
+
+        // Ilość powtórzeń.
         private int cycles;
 
+        // Zmienne potrzebne przy dodawaniu.
         private int addFrom, addTo, addAmount;
 
+        // Generator liczb losowych.
         private Random rng = new Random();
         // rng.Next(min,max) zwraca wartości <min, max).
 
@@ -38,8 +46,15 @@ namespace SDiZO_1
         {
 
             InitializeComponent();
+            
+            // Ustawianie domyślnych wartości dla interfejsu graficznego.
             radioButtonAddBeg.Checked = true;
             radioButtonDelBeg.Checked = true;
+
+            checkBoxEnableArray.Checked = true;
+            checkBoxEnableList.Checked = true;
+            checkBoxEnableHeap.Checked = true;
+            checkBoxEnableTree.Checked = true;
 
             textBoxActionMultiplier.Text = "1";
             textBoxAddAmount.Text = "100";
@@ -52,15 +67,16 @@ namespace SDiZO_1
             textBoxStatusHeap.Text = "RDY";
             textBoxStatusTree.Text = "RDY";
 
+            // Te pola zawierają nazwy plików do których będą zapisywane pomiary.
             textBoxArrayFilename.Text = "Tabl_Czas";
             textBoxListFilename.Text = "List_Czas";
             textBoxHeapFilename.Text = "Kopc_Czas";
             textBoxTreeFilename.Text = "Drzw_Czas";
 
-            SdA = new SdArray();
-            SdL = new SdList();
-            SdH = new SdHeap();
-            SdT = new SdTree();
+            SdArray = new SdArray();
+            SdList = new SdList();
+            SdHeap = new SdHeap();
+            SdTree = new SdTree();
             cycles = 1;
         }
 
@@ -95,10 +111,23 @@ namespace SDiZO_1
             }
 
             // Wywoływanie funkcji każdej struktury.
-            AddSdArray();
-            AddSdList();
-            AddSdHeap();
-            AddSdTree();
+            // Sprawdzenie czy struktura nie jest wyłączona.
+            if (checkBoxEnableArray.Checked)
+            {
+                AddSdArray();
+            }
+            if (checkBoxEnableList.Checked)
+            {
+                AddSdList();
+            }
+            if (checkBoxEnableHeap.Checked)
+            {
+                AddSdHeap();
+            }
+            if (checkBoxEnableTree.Checked)
+            {
+                AddSdTree();
+            }
 
             // Przywracanie tablicy do null.
             numberArray = null;
@@ -124,9 +153,22 @@ namespace SDiZO_1
                 return;
             }
 
-            DeleteSdArray(delAmount);
-            DeleteSdList(delAmount);
-            DeleteSdHeap(delAmount);
+            if (checkBoxEnableArray.Checked)
+            {
+                DeleteSdArray(delAmount);
+            }
+            if (checkBoxEnableList.Checked)
+            {
+                DeleteSdList(delAmount);
+            }
+            if (checkBoxEnableHeap.Checked)
+            {
+                DeleteSdHeap(delAmount);
+            }
+            if (checkBoxEnableTree.Checked)
+            {
+                DeleteSdTree(delAmount);
+            }
 
             MessageBox.Show("Usuwanie zakończone", "Informacja",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -158,46 +200,74 @@ namespace SDiZO_1
             // Reset struktur do stanu pustego.
             MessageBox.Show("Struktury wyzerowane", "Informacja",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-            SdA = new SdArray();
-            SdL = new SdList();
-            SdH = new SdHeap();
-            SdT = new SdTree();
+            SdArray = new SdArray();
+            SdList = new SdList();
+            SdHeap = new SdHeap();
+            SdTree = new SdTree();
+        }
+        // Wyszukiwanie po wartości.
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            int value;
+            if (!int.TryParse(textBoxDelAmount.Text, out value))
+            {
+                MessageBox.Show("Nieprawidłowa liczba", "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (checkBoxEnableArray.Checked)
+            {
+                SearchSdArray(value);
+            }
+            if (checkBoxEnableList.Checked)
+            {
+                SearchSdList(value);
+            }
+            if (checkBoxEnableHeap.Checked)
+            {
+                SearchSdHeap(value);
+            }
+            if (checkBoxEnableTree.Checked)
+            {
+                SearchSdTree(value);
+            }
         }
 
         // Wypisywanie zawartości do pliku i wyświetlanie.
         // Jeżeli struktura istnieje - zapisz jej zawartość do pliku a następnie wyświetl.
         private void buttonArraySaveData_Click(object sender, EventArgs e)
         {
-            if (SdA != null)
+            if (SdArray != null)
             {
-                SdA.SaveData();
+                SdArray.SaveData();
                 var displayForm = new DisplayForm("Tabl_Zawartość");
                 displayForm.Show();
             }
         }
         private void buttonListSaveData_Click(object sender, EventArgs e)
         {
-            if (SdL != null)
+            if (SdList != null)
             {
-                SdL.SaveData();
+                SdList.SaveData();
                 var displayForm = new DisplayForm("List_Zawartość");
                 displayForm.Show();
             }
         }
         private void buttonHeapSaveData_Click(object sender, EventArgs e)
         {
-            if (SdH != null)
+            if (SdHeap != null)
             {
-                SdH.SaveData();
+                SdHeap.SaveData();
                 var displayForm = new DisplayForm("Kopc_Zawartość");
                 displayForm.Show();
             }
         }
         private void buttonTreeSaveData_Click(object sender, EventArgs e)
         {
-            if (SdT != null)
+            if (SdTree != null)
             {
-                SdT.SaveData();
+                SdTree.SaveData();
                 var displayForm = new DisplayForm("Drzw_Zawartość");
                 displayForm.Show();
             }
@@ -208,7 +278,7 @@ namespace SDiZO_1
         private void AddSdArray()
         {
             // Tworzenie licznika czasu.
-            SdAClock = new Clock(textBoxArrayFilename.Text, "ADDA X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text);
+            SdArrayClock = new Clock(textBoxArrayFilename.Text, "ADDA X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text);
             textBoxStatusArray.Text = "WRK";
 
             // Dodawanie w losowe miejsce.
@@ -219,21 +289,21 @@ namespace SDiZO_1
                     // Tworzenie nowej tablicy.
                     FillNumberArray();
                     // Losowanie pozycji z zakresu [0, (obecny rozmiar tablicy)]
-                    int position = rng.Next(0, SdA.Size);
+                    int position = rng.Next(0, SdArray.Size);
 
                     // Start pomiaru.
-                    SdAClock.Start();
+                    SdArrayClock.Start();
                     for (int i = 0; i < arraySize; i++)
                     {
-                        SdA.Add(numberArray[i], position);
+                        SdArray.Add(numberArray[i], position);
                     }
                     // Finish pomiaru i zapis.
-                    SdAClock.Finish();
+                    SdArrayClock.Finish();
 
                     // Czyszczenie struktury.
                     if (checkBoxReset.Checked)
                     {
-                        SdA = new SdArray();
+                        SdArray = new SdArray();
                     }
                 }
             }
@@ -246,18 +316,18 @@ namespace SDiZO_1
                     // Tworzenie nowej tablicy.
                     FillNumberArray();
                     // Start pomiaru.
-                    SdAClock.Start();
+                    SdArrayClock.Start();
                     for (int i = 0; i < arraySize; i++)
                     {
-                        SdA.AddBeg(numberArray[i]);
+                        SdArray.AddBeg(numberArray[i]);
                     }
                     // Finish pomiaru i zapis.
-                    SdAClock.Finish();
+                    SdArrayClock.Finish();
 
                     // Czyszczenie struktury.
                     if (checkBoxReset.Checked)
                     {
-                        SdA = new SdArray();
+                        SdArray = new SdArray();
                     }
                 }
             }
@@ -270,18 +340,18 @@ namespace SDiZO_1
                     // Tworzenie nowej tablicy.
                     FillNumberArray();
                     // Start pomiaru.
-                    SdAClock.Start();
+                    SdArrayClock.Start();
                     for (int i = 0; i < arraySize; i++)
                     {
-                        SdA.AddEnd(numberArray[i]);
+                        SdArray.AddEnd(numberArray[i]);
                     }
                     // Finish pomiaru.
-                    SdAClock.Finish();
+                    SdArrayClock.Finish();
 
                     // Czyszczenie struktury.
                     if (checkBoxReset.Checked)
                     {
-                        SdA = new SdArray();
+                        SdArray = new SdArray();
                     }
                 }
             }
@@ -292,14 +362,14 @@ namespace SDiZO_1
                 // TODO
             }
 
-            SdAClock.SaveLog(SdAClock.AverageTime());
-            textBoxTimeArray.Text = SdAClock.AverageTime();
+            SdArrayClock.SaveLog(SdArrayClock.AverageTime());
+            textBoxTimeArray.Text = SdArrayClock.AverageTime();
             textBoxStatusArray.Text = "RDY";
         }
         private void AddSdList()
         {   
             // Tworzenie licznika czasu.
-            SdLClock = new Clock(textBoxListFilename.Text, "ADDL X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text);
+            SdListClock = new Clock(textBoxListFilename.Text, "ADDL X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text);
             textBoxStatusList.Text = "WRK";
 
             // Dodawanie w losowe miejsce.
@@ -310,21 +380,21 @@ namespace SDiZO_1
                     // Tworzenie nowej tablicy.
                     FillNumberArray();
                     // Losowanie pozycji z zakresu [0, (obecny rozmiar listy-1)]
-                    int position = rng.Next(0, SdL.Size);
+                    int position = rng.Next(0, SdList.Size);
                     
                     // Start pomiaru.
-                    SdLClock.Start();
+                    SdListClock.Start();
                     for (int i = 0; i < arraySize; i++)
                     {
-                        SdL.Add(numberArray[i], position);
+                        SdList.Add(numberArray[i], position);
                     }
                     // Finish pomiaru.
-                    SdLClock.Finish();
+                    SdListClock.Finish();
 
                     // Czyszczenie struktury.
                     if (checkBoxReset.Checked)
                     {
-                        SdL = new SdList();
+                        SdList = new SdList();
                     }
                 }
             }
@@ -337,18 +407,18 @@ namespace SDiZO_1
                     // Tworzenie nowej tablicy.
                     FillNumberArray();
                     // Start pomiaru.
-                    SdLClock.Start();
+                    SdListClock.Start();
                     for (int i = 0; i < arraySize; i++)
                     {
-                        SdL.AddBeg(numberArray[i]);
+                        SdList.AddBeg(numberArray[i]);
                     }
                     // Finish pomiaru.
-                    SdLClock.Finish();
+                    SdListClock.Finish();
 
                     // Czyszczenie struktury.
                     if (checkBoxReset.Checked)
                     {
-                        SdL = new SdList();
+                        SdList = new SdList();
                     }
                 }
             }
@@ -361,18 +431,18 @@ namespace SDiZO_1
                     // Tworzenie nowej tablicy.
                     FillNumberArray();
                     // Start pomiaru.
-                    SdLClock.Start();
+                    SdListClock.Start();
                     for (int i = 0; i < arraySize; i++)
                     {
-                        SdL.AddEnd(numberArray[i]);
+                        SdList.AddEnd(numberArray[i]);
                     }
                     // Finish pomiaru.
-                    SdLClock.Finish();
+                    SdListClock.Finish();
 
                     // Czyszczenie struktury.
                     if (checkBoxReset.Checked)
                     {
-                        SdL = new SdList();
+                        SdList = new SdList();
                     }
                 }
             }
@@ -394,17 +464,17 @@ namespace SDiZO_1
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                SdL.Add(addTargetValue, addTargetPosition);
+                SdList.Add(addTargetValue, addTargetPosition);
             }
 
-            SdLClock.SaveLog(SdLClock.AverageTime());
-            textBoxTimeList.Text = SdLClock.AverageTime();
+            SdListClock.SaveLog(SdListClock.AverageTime());
+            textBoxTimeList.Text = SdListClock.AverageTime();
             textBoxStatusList.Text = "RDY";
 
         }
         private void AddSdHeap()
         {
-            SdHClock = new Clock(textBoxHeapFilename.Text, ("ADDH X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
+            SdHeapClock = new Clock(textBoxHeapFilename.Text, ("ADDH X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
             textBoxStatusHeap.Text = "WRK";
 
                 for (int j = 0; j < cycles; j++)
@@ -412,25 +482,25 @@ namespace SDiZO_1
                     // Standardowe dodawanie.
                     FillNumberArray();
                     // Start pomiaru.
-                    SdHClock.Start();
+                    SdHeapClock.Start();
                     for (var i = 0; i < arraySize; i++)
-                        SdH.Add(numberArray[i]);
+                        SdHeap.Add(numberArray[i]);
                     // Finish pomiaru.
-                    SdHClock.Finish();
+                    SdHeapClock.Finish();
 
                     // Czyszczenie struktury.
                     if (checkBoxReset.Checked)
-                        SdH = new SdHeap();
+                        SdHeap = new SdHeap();
                 }
 
-            SdHClock.SaveLog(SdHClock.AverageTime());
-            textBoxTimeHeap.Text = SdHClock.AverageTime();
+            SdHeapClock.SaveLog(SdHeapClock.AverageTime());
+            textBoxTimeHeap.Text = SdHeapClock.AverageTime();
             textBoxStatusHeap.Text = "RDY";
 
         }
         private void AddSdTree()
         {
-            SdTClock = new Clock(textBoxTreeFilename.Text, ("ADDT X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
+            SdTreeClock = new Clock(textBoxTreeFilename.Text, ("ADDT X " + textBoxAddFrom.Text + " X " + textBoxAddTo.Text + " X " + textBoxAddAmount.Text));
             textBoxStatusTree.Text = "WRK";
 
 
@@ -440,37 +510,37 @@ namespace SDiZO_1
                 // Tworzenie nowej tablicy.
                 FillNumberArray();
                 // Start pomiaru.
-                SdTClock.Start();
+                SdTreeClock.Start();
                 for (var i = 0; i < arraySize; i++)
-                    SdT.Add(numberArray[i]);
+                    SdTree.Add(numberArray[i]);
                 // Finish pomiaru.
-                SdTClock.Finish();
+                SdTreeClock.Finish();
 
                 // Czyszczenie struktury.
                 if (checkBoxReset.Checked)
-                    SdT = new SdTree();
+                    SdTree = new SdTree();
             }
 
-            SdTClock.SaveLog(SdTClock.AverageTime());
-            textBoxTimeTree.Text = SdTClock.AverageTime();
+            SdTreeClock.SaveLog(SdTreeClock.AverageTime());
+            textBoxTimeTree.Text = SdTreeClock.AverageTime();
             textBoxStatusTree.Text = "RDY";
         }
 
         // Usuwanie.
         private void DeleteSdArray(int deleteAmount)
         {
-            SdAClock = new Clock(textBoxArrayFilename.Text, "DELA X " + textBoxDelAmount.Text);
+            SdArrayClock = new Clock(textBoxArrayFilename.Text, "DELA X " + textBoxDelAmount.Text);
             textBoxStatusArray.Text = "WRK";
 
             // Usuwanie z losowego miejsca.
             if (radioButtonDelRng.Checked)
             {
-                while (SdA.Size >= deleteAmount && deleteAmount > 0)
+                while (SdArray.Size >= deleteAmount && deleteAmount > 0)
                 {
-                    int position = rng.Next(0, SdA.Size);
-                    SdAClock.Start();
-                    SdA.Delete(position);
-                    SdAClock.Stop();
+                    int position = rng.Next(0, SdArray.Size);
+                    SdArrayClock.Start();
+                    SdArray.Delete(position);
+                    SdArrayClock.Stop();
                     deleteAmount--;
                 }
 
@@ -479,10 +549,10 @@ namespace SDiZO_1
             // Usuwanie z początku.
             if (radioButtonDelBeg.Checked)
             {
-                while (SdA.Size >= deleteAmount && deleteAmount > 0)
+                while (SdArray.Size >= deleteAmount && deleteAmount > 0)
                 {
-                    SdAClock.Start();
-                    SdA.Delete(0);
+                    SdArrayClock.Start();
+                    SdArray.Delete(0);
                     deleteAmount--;
                 }
             }
@@ -490,34 +560,34 @@ namespace SDiZO_1
             // Usuwanie z końca.
             if (radioButtonDelEnd.Checked)
             {
-                while (SdA.Size >= deleteAmount && deleteAmount > 0)
+                while (SdArray.Size >= deleteAmount && deleteAmount > 0)
                 {
-                    int position = SdA.Size - 1;
-                    SdAClock.Start();
-                    SdA.Delete(position);
+                    int position = SdArray.Size - 1;
+                    SdArrayClock.Start();
+                    SdArray.Delete(position);
                     deleteAmount--;
                 }
             }
 
-            SdAClock.Finish();
-            SdAClock.SaveLog(SdAClock.AverageTime());
-            textBoxTimeArray.Text = SdAClock.AverageTime();
+            SdArrayClock.Finish();
+            SdArrayClock.SaveLog(SdArrayClock.AverageTime());
+            textBoxTimeArray.Text = SdArrayClock.AverageTime();
             textBoxStatusArray.Text = "RDY";
         }
         private void DeleteSdList(int deleteAmount)
         {
-            SdAClock = new Clock(textBoxListFilename.Text, "DELA X " + textBoxDelAmount.Text);
+            SdListClock = new Clock(textBoxListFilename.Text, "DELL X " + textBoxDelAmount.Text);
             textBoxStatusList.Text = "WRK";
 
             // Usuwanie z losowego miejsca.
             if (radioButtonDelRng.Checked)
             {
-                while (SdL.Size >= deleteAmount && deleteAmount > 0)
+                while (SdList.Size >= deleteAmount && deleteAmount > 0)
                 {
-                    int position = rng.Next(0, SdL.Size);
-                    SdLClock.Start();
-                    SdL.Delete(position);
-                    SdLClock.Stop();
+                    int position = rng.Next(0, SdList.Size);
+                    SdListClock.Start();
+                    SdList.Delete(position);
+                    SdListClock.Stop();
                     deleteAmount--;
                 }
 
@@ -526,11 +596,11 @@ namespace SDiZO_1
             // Usuwanie z początku.
             if (radioButtonDelBeg.Checked)
             {
-                while (SdL.Size >= deleteAmount && deleteAmount > 0)
+                while (SdList.Size >= deleteAmount && deleteAmount > 0)
                 {
-                    SdLClock.Start();
-                    SdL.Delete(1);
-                    SdLClock.Stop();
+                    SdListClock.Start();
+                    SdList.Delete(1);
+                    SdListClock.Stop();
                     deleteAmount--;
                 }
             }
@@ -538,37 +608,37 @@ namespace SDiZO_1
             // Usuwanie z końca.
             if (radioButtonDelEnd.Checked)
             {
-                while (SdL.Size >= deleteAmount && deleteAmount > 0)
+                while (SdList.Size >= deleteAmount && deleteAmount > 0)
                 {
-                    int position = SdL.Size;
-                    SdLClock.Start();
-                    SdL.Delete(position);
-                    SdLClock.Stop();
+                    int position = SdList.Size;
+                    SdListClock.Start();
+                    SdList.Delete(position);
+                    SdListClock.Stop();
                     deleteAmount--;
                 }
             }
 
-            SdLClock.Finish();
-            SdLClock.SaveLog(SdLClock.AverageTime());
-            textBoxTimeList.Text = SdLClock.AverageTime();
+            SdListClock.Finish();
+            SdListClock.SaveLog(SdListClock.AverageTime());
+            textBoxTimeList.Text = SdListClock.AverageTime();
             textBoxStatusList.Text = "RDY";
         }
         private void DeleteSdHeap(int deleteAmount)
         {
-            SdHClock = new Clock(textBoxHeapFilename.Text, "DELA X " + textBoxDelAmount.Text);
+            SdHeapClock = new Clock(textBoxHeapFilename.Text, "DELH X " + textBoxDelAmount.Text);
             textBoxStatusHeap.Text = "WRK";
 
-            while (SdH.Size >= deleteAmount && deleteAmount > 0)
+            while (SdHeap.Size >= deleteAmount && deleteAmount > 0)
             {
-                SdHClock.Start();
-                SdH.Delete();
-                SdHClock.Stop();
+                SdHeapClock.Start();
+                SdHeap.Delete();
+                SdHeapClock.Stop();
                 deleteAmount--;
             }
 
-            SdHClock.Finish();
-            SdHClock.SaveLog(SdHClock.AverageTime());
-            textBoxTimeHeap.Text = SdHClock.AverageTime();
+            SdHeapClock.Finish();
+            SdHeapClock.SaveLog(SdHeapClock.AverageTime());
+            textBoxTimeHeap.Text = SdHeapClock.AverageTime();
             textBoxStatusHeap.Text = "RDY";
         }
         private void DeleteSdTree(int deleteAmount)
@@ -578,22 +648,82 @@ namespace SDiZO_1
 
         // TODO
         // Wyszukiwanie.
-        private void SearchSdArray()
+        private void SearchSdArray(int value)
         {
+            SdArrayClock = new Clock(textBoxArrayFilename.Text, "FNDA X " + textBoxSearchValue.Text);
+            textBoxStatusArray.Text = "WRK";
+
+            int resultIndex;
+            SdArrayClock.Start();
+            resultIndex = SdArray.FindByValue(value);
+            SdArrayClock.Finish();
+
+            if (resultIndex == -1)
+            {
+                textBoxSearchResultArray.Text = "N";
+            }
+            else
+            {
+                textBoxSearchResultArray.Text = "T";
+            }
             
+            textBoxTimeArray.Text = SdArrayClock.AverageTime();
+            SdArrayClock.SaveLog(SdArrayClock.AverageTime());
+            textBoxStatusArray.Text = "RDY";
         }
-        private void SearchSdList()
+        private void SearchSdList(int value)
         {
-            
+            SdListClock = new Clock(textBoxListFilename.Text, "FNDL X " + textBoxSearchValue.Text);
+            textBoxStatusList.Text = "WRK";
+
+            SdListNode resultNode;
+            SdListClock.Start();
+            resultNode = SdList.FindByValue(value);
+            SdListClock.Finish();
+
+            if (resultNode.Data == value)
+            {
+                textBoxSearchResultList.Text = "Y";
+            }
+            else
+            {
+                textBoxSearchResultList.Text = "N";
+            }
+
+            textBoxTimeList.Text = SdListClock.AverageTime();
+            SdListClock.SaveLog(SdListClock.AverageTime());
+            textBoxStatusList.Text = "RDY";
         }
-        private void SearchSdHeap()
+        private void SearchSdHeap(int value)
         {
-            
+            SdHeapClock = new Clock(textBoxHeapFilename.Text, "FNDH X " + textBoxSearchValue.Text);
+            textBoxStatusHeap.Text = "WRK";
+
+            int resultIndex;
+            SdHeapClock.Start();
+            resultIndex = SdHeap.FindByValue(value);
+            SdHeapClock.Finish();
+
+            if (resultIndex == -1)
+            {
+                textBoxSearchResultHeap.Text = "N";
+            }
+            else
+            {
+                textBoxSearchResultHeap.Text = "T";
+            }
+
+            textBoxTimeHeap.Text = SdHeapClock.AverageTime();
+            SdHeapClock.SaveLog(SdHeapClock.AverageTime());
+            textBoxStatusHeap.Text = "RDY";
         }
-        private void SearchSdTree()
+        private void SearchSdTree(int value)
         {
-            
+            SdTreeClock = new Clock(textBoxTreeFilename.Text, "FNDT X " + textBoxSearchValue.Text);
+            textBoxStatusArray.Text = "WRK";
         }
+
+        
 
         // Wczytywanie pliku.
         private void ReadFile(string filename)
@@ -672,7 +802,8 @@ namespace SDiZO_1
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                // TODO
+                //Console.WriteLine(e);
                 throw;
             }
         }

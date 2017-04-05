@@ -754,6 +754,7 @@ namespace SDiZO_1
             textBoxTimeTree.Text = SdTreeClock.AverageTime();
             SdTreeClock.SaveLog(SdTreeClock.AverageTime());
             textBoxStatusTree.Text = "RDY";
+       
         }
 
         // Wczytywanie pliku.
@@ -842,22 +843,30 @@ namespace SDiZO_1
         // Tworzenie tablicy z liczbami.
         private void FillNumberArray()
         {
-            if (checkBoxAddFromFile.Checked)
+            if (radioButtonFromFile.Checked)
             {
-                // Jeżeli zaznaczony jest checkBox "wczytywanie pliku"
+                // Jeżeli zaznaczony jest radioButton "wczytywanie pliku"
                 // Wczytaj dane z pliku do tablicy.
                 ReadFile("Input");
                 // Ustaw cykle na 1, nie ma potrzeby wczytywać kilka razy tego samego.
                 cycles = 1;
                 textBoxActionMultiplier.Text = "1";
             }
+            if (radioButtonRandomUnique.Checked && (addTo-addFrom > addAmount))
+            {
+                // Stwórz tablicę losowych, unikatowych liczb.
+                // Jeżeli nie jest to możliwe (drugi warunek w if; przedział musi być większy od ilości liczb) - stwórz normalną losową tablicę liczb.
+                numberArray = DataGenerator.NewArrayUnique(addFrom, addTo, addAmount);
+            }
             else
             {
                 // Stwórz tablicę losowych liczb.
                 numberArray = DataGenerator.NewArray(addFrom, addTo, addAmount);
             }
+            
             // Dopasuj wielkość.
             arraySize = numberArray.Length;
+            
         }
     }
 }

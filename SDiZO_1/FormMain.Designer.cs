@@ -62,6 +62,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.buttonCreateFile = new System.Windows.Forms.Button();
             this.groupBoxSearch = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBoxSearchResultTree = new System.Windows.Forms.TextBox();
             this.textBoxSearchResultHeap = new System.Windows.Forms.TextBox();
             this.textBoxSearchResultList = new System.Windows.Forms.TextBox();
@@ -70,7 +71,6 @@
             this.textBoxSearchValue = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBoxAdd = new System.Windows.Forms.GroupBox();
-            this.checkBoxAddFromFile = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxAddTargetPosition = new System.Windows.Forms.TextBox();
@@ -109,7 +109,11 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonFromFile = new System.Windows.Forms.RadioButton();
+            this.radioButtonRandom = new System.Windows.Forms.RadioButton();
+            this.radioButtonRandomUnique = new System.Windows.Forms.RadioButton();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
@@ -121,6 +125,7 @@
             this.groupBoxDel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelTree.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelArray
@@ -303,6 +308,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.groupBoxIO);
             this.panel2.Controls.Add(this.groupBoxSearch);
@@ -311,7 +317,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(12, 96);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(686, 285);
+            this.panel2.Size = new System.Drawing.Size(686, 286);
             this.panel2.TabIndex = 7;
             // 
             // panel1
@@ -468,6 +474,17 @@
             this.groupBoxSearch.TabStop = false;
             this.groupBoxSearch.Text = "Wyszukiwanie";
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox1.Location = new System.Drawing.Point(6, 146);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(136, 34);
+            this.textBox1.TabIndex = 36;
+            this.textBox1.Text = "T - znaleziono                    N - nie znaleziono";
+            // 
             // textBoxSearchResultTree
             // 
             this.textBoxSearchResultTree.BackColor = System.Drawing.Color.ForestGreen;
@@ -534,7 +551,6 @@
             // groupBoxAdd
             // 
             this.groupBoxAdd.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.groupBoxAdd.Controls.Add(this.checkBoxAddFromFile);
             this.groupBoxAdd.Controls.Add(this.label2);
             this.groupBoxAdd.Controls.Add(this.label1);
             this.groupBoxAdd.Controls.Add(this.textBoxAddTargetPosition);
@@ -557,20 +573,10 @@
             this.groupBoxAdd.TabStop = false;
             this.groupBoxAdd.Text = "Dodawanie";
             // 
-            // checkBoxAddFromFile
-            // 
-            this.checkBoxAddFromFile.AutoSize = true;
-            this.checkBoxAddFromFile.Location = new System.Drawing.Point(10, 154);
-            this.checkBoxAddFromFile.Name = "checkBoxAddFromFile";
-            this.checkBoxAddFromFile.Size = new System.Drawing.Size(85, 17);
-            this.checkBoxAddFromFile.TabIndex = 33;
-            this.checkBoxAddFromFile.Text = "Dane z pliku";
-            this.checkBoxAddFromFile.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 224);
+            this.label2.Location = new System.Drawing.Point(7, 201);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 32;
@@ -579,7 +585,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 203);
+            this.label1.Location = new System.Drawing.Point(7, 180);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 31;
@@ -587,14 +593,14 @@
             // 
             // textBoxAddTargetPosition
             // 
-            this.textBoxAddTargetPosition.Location = new System.Drawing.Point(60, 224);
+            this.textBoxAddTargetPosition.Location = new System.Drawing.Point(60, 201);
             this.textBoxAddTargetPosition.Name = "textBoxAddTargetPosition";
             this.textBoxAddTargetPosition.Size = new System.Drawing.Size(79, 20);
             this.textBoxAddTargetPosition.TabIndex = 30;
             // 
             // textBoxAddTargetValue
             // 
-            this.textBoxAddTargetValue.Location = new System.Drawing.Point(60, 200);
+            this.textBoxAddTargetValue.Location = new System.Drawing.Point(60, 177);
             this.textBoxAddTargetValue.Name = "textBoxAddTargetValue";
             this.textBoxAddTargetValue.Size = new System.Drawing.Size(79, 20);
             this.textBoxAddTargetValue.TabIndex = 29;
@@ -602,7 +608,7 @@
             // radioButtonAddTarget
             // 
             this.radioButtonAddTarget.AutoSize = true;
-            this.radioButtonAddTarget.Location = new System.Drawing.Point(10, 177);
+            this.radioButtonAddTarget.Location = new System.Drawing.Point(10, 154);
             this.radioButtonAddTarget.Name = "radioButtonAddTarget";
             this.radioButtonAddTarget.Size = new System.Drawing.Size(100, 17);
             this.radioButtonAddTarget.TabIndex = 25;
@@ -612,7 +618,7 @@
             // 
             // buttonAddTarget
             // 
-            this.buttonAddTarget.Location = new System.Drawing.Point(4, 250);
+            this.buttonAddTarget.Location = new System.Drawing.Point(6, 249);
             this.buttonAddTarget.Name = "buttonAddTarget";
             this.buttonAddTarget.Size = new System.Drawing.Size(136, 23);
             this.buttonAddTarget.TabIndex = 11;
@@ -715,7 +721,7 @@
             this.groupBoxDel.Controls.Add(this.radioButtonDelEnd);
             this.groupBoxDel.Location = new System.Drawing.Point(157, 3);
             this.groupBoxDel.Name = "groupBoxDel";
-            this.groupBoxDel.Size = new System.Drawing.Size(148, 279);
+            this.groupBoxDel.Size = new System.Drawing.Size(148, 186);
             this.groupBoxDel.TabIndex = 35;
             this.groupBoxDel.TabStop = false;
             this.groupBoxDel.Text = "Usuwanie";
@@ -756,7 +762,7 @@
             // 
             // buttonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(6, 250);
+            this.buttonDel.Location = new System.Drawing.Point(5, 157);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(136, 23);
             this.buttonDel.TabIndex = 29;
@@ -938,22 +944,70 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox1
+            // groupBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(6, 146);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(136, 34);
-            this.textBox1.TabIndex = 36;
-            this.textBox1.Text = "T - znaleziono                    N - nie znaleziono";
+            this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.radioButtonRandomUnique);
+            this.groupBox1.Controls.Add(this.radioButtonRandom);
+            this.groupBox1.Controls.Add(this.radioButtonFromFile);
+            this.groupBox1.Location = new System.Drawing.Point(157, 195);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(302, 87);
+            this.groupBox1.TabIndex = 36;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Dane do dodawania";
+            // 
+            // radioButtonFromFile
+            // 
+            this.radioButtonFromFile.AutoSize = true;
+            this.radioButtonFromFile.Location = new System.Drawing.Point(9, 19);
+            this.radioButtonFromFile.Name = "radioButtonFromFile";
+            this.radioButtonFromFile.Size = new System.Drawing.Size(57, 17);
+            this.radioButtonFromFile.TabIndex = 32;
+            this.radioButtonFromFile.TabStop = true;
+            this.radioButtonFromFile.Text = "Z pliku";
+            this.radioButtonFromFile.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonRandom
+            // 
+            this.radioButtonRandom.AutoSize = true;
+            this.radioButtonRandom.Location = new System.Drawing.Point(9, 42);
+            this.radioButtonRandom.Name = "radioButtonRandom";
+            this.radioButtonRandom.Size = new System.Drawing.Size(62, 17);
+            this.radioButtonRandom.TabIndex = 33;
+            this.radioButtonRandom.TabStop = true;
+            this.radioButtonRandom.Text = "Losowe";
+            this.radioButtonRandom.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonRandomUnique
+            // 
+            this.radioButtonRandomUnique.AutoSize = true;
+            this.radioButtonRandomUnique.Location = new System.Drawing.Point(9, 65);
+            this.radioButtonRandomUnique.Name = "radioButtonRandomUnique";
+            this.radioButtonRandomUnique.Size = new System.Drawing.Size(140, 17);
+            this.radioButtonRandomUnique.TabIndex = 34;
+            this.radioButtonRandomUnique.TabStop = true;
+            this.radioButtonRandomUnique.Text = "Losowe (bez powtórzeń)";
+            this.radioButtonRandomUnique.UseVisualStyleBackColor = true;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox4.Location = new System.Drawing.Point(154, 6);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(142, 76);
+            this.textBox4.TabIndex = 36;
+            this.textBox4.Text = "Tablica liczb bez powtórzeń lepiej pokazuje działanie drzewa. Wczytywany plik mus" +
+    "i być w formacie takim jak w instrukcji.";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 385);
+            this.ClientSize = new System.Drawing.Size(710, 395);
             this.Controls.Add(this.panelTree);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelArray);
@@ -982,6 +1036,8 @@
             this.panel3.PerformLayout();
             this.panelTree.ResumeLayout(false);
             this.panelTree.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1064,11 +1120,15 @@
         private System.Windows.Forms.CheckBox checkBoxEnableTree;
         private System.Windows.Forms.CheckBox checkBoxEnableList;
         private System.Windows.Forms.CheckBox checkBoxEnableArray;
-        private System.Windows.Forms.CheckBox checkBoxAddFromFile;
         private System.Windows.Forms.TextBox textBoxSearchResultTree;
         private System.Windows.Forms.TextBox textBoxSearchResultHeap;
         private System.Windows.Forms.TextBox textBoxSearchResultList;
         private System.Windows.Forms.TextBox textBoxSearchResultArray;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.RadioButton radioButtonRandomUnique;
+        private System.Windows.Forms.RadioButton radioButtonRandom;
+        private System.Windows.Forms.RadioButton radioButtonFromFile;
     }
 }

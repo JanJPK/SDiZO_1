@@ -137,11 +137,11 @@ namespace SDiZO_1.Structures
             
             if (node == null)
             {
-                sw.WriteLine(prefix + "-- [brak]");
+                sw.WriteLine(prefix + "---- [brak]");
             }
             else
             {
-                sw.WriteLine(prefix + "-- [" + node.Data + "]");
+                sw.WriteLine(prefix + "---- [" + node.Data + "]");
                 HeapForm(node.Left, prefix + "|  ", sw);
                 HeapForm(node.Right, prefix + "|  ", sw);
 

@@ -42,7 +42,7 @@ namespace SDiZO_1.Structures
             {
                 newArray[i+1] = Array[i];
             }
-            // Dodawanie nowej liczby na sam koniec.
+            // Dodawanie nowej liczby na sam początek.
             newArray[0] = number;
             // Przypisanie zmiennym nowej tablicy i jej wielkości.
             Array = newArray;

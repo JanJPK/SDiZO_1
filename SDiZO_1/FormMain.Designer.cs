@@ -47,6 +47,11 @@
             this.textBoxStatusHeap = new System.Windows.Forms.TextBox();
             this.textBoxTimeHeap = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.radioButtonRandomUnique = new System.Windows.Forms.RadioButton();
+            this.radioButtonRandom = new System.Windows.Forms.RadioButton();
+            this.radioButtonFromFile = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBoxEnableHeap = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableTree = new System.Windows.Forms.CheckBox();
@@ -109,15 +114,11 @@
             this.labelTree = new System.Windows.Forms.Label();
             this.textBoxStatusTree = new System.Windows.Forms.TextBox();
             this.textBoxTimeTree = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonFromFile = new System.Windows.Forms.RadioButton();
-            this.radioButtonRandom = new System.Windows.Forms.RadioButton();
-            this.radioButtonRandomUnique = new System.Windows.Forms.RadioButton();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.panelArray.SuspendLayout();
             this.panelList.SuspendLayout();
             this.panelHeap.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBoxIO.SuspendLayout();
             this.groupBoxSearch.SuspendLayout();
@@ -125,7 +126,6 @@
             this.groupBoxDel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelTree.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelArray
@@ -320,6 +320,65 @@
             this.panel2.Size = new System.Drawing.Size(686, 286);
             this.panel2.TabIndex = 7;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.radioButtonRandomUnique);
+            this.groupBox1.Controls.Add(this.radioButtonRandom);
+            this.groupBox1.Controls.Add(this.radioButtonFromFile);
+            this.groupBox1.Location = new System.Drawing.Point(157, 195);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(302, 87);
+            this.groupBox1.TabIndex = 36;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Dane do dodawania";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox4.Location = new System.Drawing.Point(154, 6);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(142, 76);
+            this.textBox4.TabIndex = 36;
+            this.textBox4.Text = "Tablica liczb bez powtórzeń lepiej pokazuje działanie drzewa. Wczytywany plik mus" +
+    "i być w formacie takim jak w instrukcji.";
+            // 
+            // radioButtonRandomUnique
+            // 
+            this.radioButtonRandomUnique.AutoSize = true;
+            this.radioButtonRandomUnique.Location = new System.Drawing.Point(9, 65);
+            this.radioButtonRandomUnique.Name = "radioButtonRandomUnique";
+            this.radioButtonRandomUnique.Size = new System.Drawing.Size(140, 17);
+            this.radioButtonRandomUnique.TabIndex = 34;
+            this.radioButtonRandomUnique.TabStop = true;
+            this.radioButtonRandomUnique.Text = "Losowe (bez powtórzeń)";
+            this.radioButtonRandomUnique.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonRandom
+            // 
+            this.radioButtonRandom.AutoSize = true;
+            this.radioButtonRandom.Location = new System.Drawing.Point(9, 42);
+            this.radioButtonRandom.Name = "radioButtonRandom";
+            this.radioButtonRandom.Size = new System.Drawing.Size(62, 17);
+            this.radioButtonRandom.TabIndex = 33;
+            this.radioButtonRandom.TabStop = true;
+            this.radioButtonRandom.Text = "Losowe";
+            this.radioButtonRandom.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFromFile
+            // 
+            this.radioButtonFromFile.AutoSize = true;
+            this.radioButtonFromFile.Location = new System.Drawing.Point(9, 19);
+            this.radioButtonFromFile.Name = "radioButtonFromFile";
+            this.radioButtonFromFile.Size = new System.Drawing.Size(57, 17);
+            this.radioButtonFromFile.TabIndex = 32;
+            this.radioButtonFromFile.TabStop = true;
+            this.radioButtonFromFile.Text = "Z pliku";
+            this.radioButtonFromFile.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.RosyBrown;
@@ -455,6 +514,7 @@
             this.buttonCreateFile.TabIndex = 7;
             this.buttonCreateFile.Text = "Twórz plik";
             this.buttonCreateFile.UseVisualStyleBackColor = true;
+            this.buttonCreateFile.Click += new System.EventHandler(this.buttonCreateFile_Click);
             // 
             // groupBoxSearch
             // 
@@ -944,65 +1004,6 @@
             this.textBoxTimeTree.TabIndex = 2;
             this.textBoxTimeTree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.radioButtonRandomUnique);
-            this.groupBox1.Controls.Add(this.radioButtonRandom);
-            this.groupBox1.Controls.Add(this.radioButtonFromFile);
-            this.groupBox1.Location = new System.Drawing.Point(157, 195);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(302, 87);
-            this.groupBox1.TabIndex = 36;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dane do dodawania";
-            // 
-            // radioButtonFromFile
-            // 
-            this.radioButtonFromFile.AutoSize = true;
-            this.radioButtonFromFile.Location = new System.Drawing.Point(9, 19);
-            this.radioButtonFromFile.Name = "radioButtonFromFile";
-            this.radioButtonFromFile.Size = new System.Drawing.Size(57, 17);
-            this.radioButtonFromFile.TabIndex = 32;
-            this.radioButtonFromFile.TabStop = true;
-            this.radioButtonFromFile.Text = "Z pliku";
-            this.radioButtonFromFile.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonRandom
-            // 
-            this.radioButtonRandom.AutoSize = true;
-            this.radioButtonRandom.Location = new System.Drawing.Point(9, 42);
-            this.radioButtonRandom.Name = "radioButtonRandom";
-            this.radioButtonRandom.Size = new System.Drawing.Size(62, 17);
-            this.radioButtonRandom.TabIndex = 33;
-            this.radioButtonRandom.TabStop = true;
-            this.radioButtonRandom.Text = "Losowe";
-            this.radioButtonRandom.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonRandomUnique
-            // 
-            this.radioButtonRandomUnique.AutoSize = true;
-            this.radioButtonRandomUnique.Location = new System.Drawing.Point(9, 65);
-            this.radioButtonRandomUnique.Name = "radioButtonRandomUnique";
-            this.radioButtonRandomUnique.Size = new System.Drawing.Size(140, 17);
-            this.radioButtonRandomUnique.TabIndex = 34;
-            this.radioButtonRandomUnique.TabStop = true;
-            this.radioButtonRandomUnique.Text = "Losowe (bez powtórzeń)";
-            this.radioButtonRandomUnique.UseVisualStyleBackColor = true;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox4.Location = new System.Drawing.Point(154, 6);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(142, 76);
-            this.textBox4.TabIndex = 36;
-            this.textBox4.Text = "Tablica liczb bez powtórzeń lepiej pokazuje działanie drzewa. Wczytywany plik mus" +
-    "i być w formacie takim jak w instrukcji.";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1022,6 +1023,8 @@
             this.panelHeap.ResumeLayout(false);
             this.panelHeap.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBoxIO.ResumeLayout(false);
@@ -1036,8 +1039,6 @@
             this.panel3.PerformLayout();
             this.panelTree.ResumeLayout(false);
             this.panelTree.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

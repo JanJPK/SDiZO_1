@@ -15,6 +15,8 @@ namespace SDiZO_1
 {
     public partial class FormMain : Form
     {
+        // ######## ######## ######## ######## Zmienne
+        #region
         public string SavePath = @".\";
 
         // Tablica z której dodawane będą liczby do struktur.
@@ -41,7 +43,9 @@ namespace SDiZO_1
         private Random rng = new Random();
         // rng.Next(min,max) zwraca wartości <min, max).
 
-        // Konstruktor.
+        #endregion
+
+        // ######## ######## ######## ######## Konstruktor
         public FormMain()
         {
 
@@ -50,6 +54,7 @@ namespace SDiZO_1
             // Ustawianie domyślnych wartości dla interfejsu graficznego.
             radioButtonAddBeg.Checked = true;
             radioButtonDelBeg.Checked = true;
+            radioButtonRandom.Checked = true;
 
             checkBoxEnableArray.Checked = true;
             checkBoxEnableList.Checked = true;
@@ -80,7 +85,8 @@ namespace SDiZO_1
             cycles = 1;
         }
 
-        // Przyciski:
+        // ######## ######## ######## ######## Przyciski
+        #region
         // Dodawanie.
         private void buttonAddTarget_Click(object sender, EventArgs e)
         {
@@ -273,7 +279,16 @@ namespace SDiZO_1
             }
         }
 
-        // Funkcje:
+        // Tworzenie nowego pliku Input.txt
+        private void buttonCreateFile_Click(object sender, EventArgs e)
+        {
+            // TODO
+        }
+
+        #endregion
+
+        // ######## ######## ######## ######## Funkcje
+        #region
         // Dodawanie.
         private void AddSdArray()
         {
@@ -832,10 +847,11 @@ namespace SDiZO_1
                 }
 
             }
-            catch (Exception e)
+            catch (IOException e)
             {
-                // TODO
-                //Console.WriteLine(e);
+                MessageBox.Show(e.ToString(), "Błąd",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                numberArray = new int[1];
                 throw;
             }
         }
@@ -867,6 +883,27 @@ namespace SDiZO_1
             // Dopasuj wielkość.
             arraySize = numberArray.Length;
             
+        }
+
+        #endregion
+
+        // ######## ######## ######## ######## Testowe
+        // Testowanie prędkości wyszukiwania.
+        private void SearchTest()
+        {
+            int j = 1;
+            int value = 0;
+            int addFromEx = 0;
+            int addToEx = 0;
+            int addAmountEx = 0;
+            for (int i = 0; i < j; i++)
+            {
+                numberArray = DataGenerator.NewArrayUnique(addFromEx, addToEx, addAmountEx);
+                SearchSdArray(value);
+                SearchSdList(value);
+                SearchSdHeap(value);
+                SearchSdTree(value);
+            }
         }
     }
 }
